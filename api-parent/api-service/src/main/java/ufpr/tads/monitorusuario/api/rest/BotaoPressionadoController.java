@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import ufpr.tads.monitorusuario.api.dao.BotaoPressionadoRepository;
+import ufpr.tads.monitorusuario.api.dao.BotaoRepository;
 import ufpr.tads.monitorusuario.api.model.BotaoPressionado;
 
 @RequestMapping("/botaoPressionado")
@@ -22,13 +23,16 @@ public class BotaoPressionadoController {
 
 	@Resource
 	private BotaoPressionadoRepository botaoPressionadoRepo;
+	
+	@Resource
+	private BotaoRepository botaoRepo;
 
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public ResponseEntity<?> regBotaoPressionado(@RequestBody BotaoPressionado botaoPressionado) {
 		
 		botaoPressionadoRepo.save(botaoPressionado);
 
-		log.info("Botão clicado: " + botaoPressionado.getTexto() + " - id: " + botaoPressionado.getId());
+		log.info("Botão clicado: " + botaoRepo.findOne(botaoPressionado.getIdBotao()) + " - id: " + botaoPressionado.getId());
 
 		return new ResponseEntity<>(botaoPressionado.getId(), HttpStatus.OK);
 	}

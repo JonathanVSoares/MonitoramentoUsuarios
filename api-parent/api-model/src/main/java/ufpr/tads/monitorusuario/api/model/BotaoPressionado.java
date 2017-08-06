@@ -8,5 +8,5 @@ import lombok.Data;
 public class BotaoPressionado {
 	@Id
 	private String id;
-	private String texto;
+	private String idBotao;
 }
