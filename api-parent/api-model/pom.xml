@@ -7,23 +7,10 @@
 	<description>API Model</description>
 
 	<parent>
-		<groupId>br.com.johanes.api</groupId>
+		<groupId>ufpr.tads.monitorusuario.api</groupId>
 		<artifactId>api-parent</artifactId>
 		<version>0.0.1</version>
 	</parent>
-
-<!-- 	<build>
-		<sourceDirectory>src/main/java</sourceDirectory>
-		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build> -->
 	
 	<dependencies>
 		<dependency>

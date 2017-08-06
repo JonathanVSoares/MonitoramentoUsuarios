@@ -6,7 +6,7 @@
 	<name>api-service</name>
 
 	<parent>
-		<groupId>br.com.johanes.api</groupId>
+		<groupId>ufpr.tads.monitorusuario.api</groupId>
 		<artifactId>api-parent</artifactId>
 		<version>0.0.1</version>
 	</parent>
@@ -15,14 +15,14 @@
 
 		<!-- Model -->
 		<dependency>
-			<groupId>br.com.johanes.api</groupId>
+			<groupId>ufpr.tads.monitorusuario.api</groupId>
 			<artifactId>api-model</artifactId>
 			<version>${api-version}</version>
 		</dependency>
 
 		<!-- DAO -->
 		<dependency>
-			<groupId>br.com.johanes.api</groupId>
+			<groupId>ufpr.tads.monitorusuario.api</groupId>
 			<artifactId>api-dao</artifactId>
 			<version>${api-version}</version>
 		</dependency>
