@@ -27,7 +27,7 @@ public class BotaoPressionadoController {
 	@Resource
 	private BotaoRepository botaoRepo;
 
-	@RequestMapping(value = "/", method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<?> regBotaoPressionado(@RequestBody BotaoPressionado botaoPressionado) {
 		
 		botaoPressionadoRepo.save(botaoPressionado);
