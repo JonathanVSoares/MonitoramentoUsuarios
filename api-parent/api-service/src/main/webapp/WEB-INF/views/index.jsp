@@ -84,55 +84,55 @@
                     <div id="mi-slider" class="mi-slider">
                         <ul>
 
-                            <li><a href="#" id='Boots'>
+                            <li><a href="#" id='Boots' class="produto">
                                 <img src="<c:url value="/resources/assets/ItemSlider/images/1.jpg" />" alt="img01"><h4>Boots</h4>
                             </a></li>
-                            <li><a href="#" id='Oxfords'>
+                            <li><a href="#" id='Oxfords' class="produto">
                                 <img src="<c:url value="/resources/assets/ItemSlider/images/2.jpg" />" alt="img02"><h4>Oxfords</h4>
                             </a></li>
-                            <li><a href="#" id='Loafers'>
+                            <li><a href="#" id='Loafers' class="produto">
                                 <img src="<c:url value="/resources/assets/ItemSlider/images/3.jpg" />" alt="img03" ><h4>Loafers</h4>
                             </a></li>
-                            <li><a href="#" id='Sneakers'>
+                            <li><a href="#" id='Sneakers' class="produto">
                                 <img src="<c:url value="/resources/assets/ItemSlider/images/4.jpg" />" alt="img04" ><h4>Sneakers</h4>
                             </a></li>
                         </ul>
                         <ul>
-                            <li><a href="#" id='Belts'>
+                            <li><a href="#" id='Belts' class="produto">
                                 <img src="<c:url value="/resources/assets/ItemSlider/images/5.jpg" />" alt="img05" ><h4>Belts</h4>
                             </a></li>
-                            <li><a href="#" id='HatsCaps'>
+                            <li><a href="#" id='HatsCaps' class="produto">
                                 <img src="<c:url value="/resources/assets/ItemSlider/images/6.jpg" />" alt="img06" ><h4>Hats &amp; Caps</h4>
                             </a></li>
-                            <li><a href="#" id='Sunglasses'>
+                            <li><a href="#" id='Sunglasses' class="produto">
                                 <img src="<c:url value="/resources/assets/ItemSlider/images/7.jpg" />" alt="img07" ><h4>Sunglasses</h4>
                             </a></li>
-                            <li><a href="#" id='Scarves'>
+                            <li><a href="#" id='Scarves' class="produto">
                                 <img src="<c:url value="/resources/assets/ItemSlider/images/8.jpg" />" alt="img08" ><h4>Scarves</h4>
                             </a></li>
                         </ul>
                         <ul>
-                            <li><a href="#" id='Casual'>
+                            <li><a href="#" id='Casual' class="produto">
                                 <img src="<c:url value="/resources/assets/ItemSlider/images/9.jpg" />" alt="img09" id><h4>Casual</h4>
                             </a></li>
-                            <li><a href="#" id='Luxury'>
+                            <li><a href="#" id='Luxury' class="produto">
                                 <img src="<c:url value="/resources/assets/ItemSlider/images/10.jpg" />" alt="img10"><h4>Luxury</h4>
                             </a></li>
-                            <li><a href="#" id='Sport'>
+                            <li><a href="#" id='Sport' class="produto">
                                 <img src="<c:url value="/resources/assets/ItemSlider/images/11.jpg" />" alt="img11"><h4>Sport</h4>
                             </a></li>
                         </ul>
                         <ul>
-                            <li><a href="#" id='Carry-Ons'>
+                            <li><a href="#" id='Carry-Ons' class="produto">
                                 <img src="<c:url value="/resources/assets/ItemSlider/images/12.jpg" />" alt="img12"><h4>Carry-Ons</h4>
                             </a></li>
-                            <li><a href="#" id='Duffel Bags'>
+                            <li><a href="#" id='Duffel Bags' class="produto">
                                 <img src="<c:url value="/resources/assets/ItemSlider/images/13.jpg" />" alt="img13"><h4>Duffel Bags</h4>
                             </a></li>
-                            <li><a href="#" id='Laptop Bags'>
+                            <li><a href="#" id='Laptop Bags' class="produto">
                                 <img src="<c:url value="/resources/assets/ItemSlider/images/14.jpg" />" alt="img14"><h4>Laptop Bags</h4>
                             </a></li>
-                            <li><a href="#" id='Briefcases'>
+                            <li><a href="#" id='Briefcases' class="produto">
                                 <img src="<c:url value="/resources/assets/ItemSlider/images/15.jpg" />" alt="img15"><h4>Briefcases</h4>
                             </a></li>
                         </ul>
@@ -157,7 +157,7 @@
                     <div class="thumbnail product-box">
                         <img src="<c:url value="/resources/assets/img/dummyimg.png" />" alt="" />
                         <div class="caption">
-                            <h3><a href="#" id='Galaxy1'>Samsung Galaxy </a></h3>
+                            <h3><a href="#" id='Galaxy1' class="produto">Samsung Galaxy </a></h3>
                             <p><a href="#" id='p1'>Ptional dismiss button </a></p>
                         </div>
                     </div>
@@ -169,7 +169,7 @@
                     <div class="thumbnail product-box">
                         <img src="<c:url value="/resources/assets/img/dummyimg.png" />" alt="" />
                         <div class="caption">
-                            <h3><a href="#" id='Galaxy2'>Samsung Galaxy </a></h3>
+                            <h3><a href="#" id='Galaxy2' class="produto">Samsung Galaxy </a></h3>
                             <p><a href="#" id='p2'>Ptional dismiss button </a></p>
                         </div>
                     </div>
@@ -308,7 +308,7 @@
                         <div class="thumbnail product-box">
                             <img src="<c:url value="/resources/assets/img/dummyimg.png" />" alt="" />
                             <div class="caption">
-                                <h3><a href="#" id='SamsungGalaxy'>Samsung Galaxy </a></h3>
+                                <h3><a href="#" id='SamsungGalaxy' class="produto">Samsung Galaxy </a></h3>
                                 <p>Price : <strong>$ 3,45,900</strong>  </p>
                                 <p><a href="#" id='p3'>Ptional dismiss button </a></p>
                                 <p>Ptional dismiss button in tional dismiss button in   </p>
@@ -321,7 +321,7 @@
                         <div class="thumbnail product-box">
                             <img src="<c:url value="/resources/assets/img/dummyimg.png" />" alt="" />
                             <div class="caption">
-                                <h3><a href="#" id='SamsungGalaxy2'>Samsung Galaxy </a></h3>
+                                <h3><a href="#" id='SamsungGalaxy2' class="produto">Samsung Galaxy </a></h3>
                                 <p>Price : <strong>$ 3,45,900</strong>  </p>
                                 <p><a href="#" id='p4'>Ptional dismiss button </a></p>
                                 <p>Ptional dismiss button in tional dismiss button in   </p>
@@ -334,7 +334,7 @@
                         <div class="thumbnail product-box">
                             <img src="<c:url value="/resources/assets/img/dummyimg.png" />" alt="" />
                             <div class="caption">
-                                <h3><a href="#" id='SamsungGalaxy3'>Samsung Galaxy </a></h3>
+                                <h3><a href="#" id='SamsungGalaxy3' class="produto">Samsung Galaxy </a></h3>
                                 <p>Price : <strong>$ 3,45,900</strong>  </p>
                                 <p><a href="#" id='p5'>Ptional dismiss button </a></p>
                                 <p>Ptional dismiss button in tional dismiss button in   </p>
@@ -391,7 +391,7 @@
                         <div class="thumbnail product-box">
                             <img src="<c:url value="/resources/assets/img/dummyimg.png" />" alt="" />
                             <div class="caption">
-                                <h3><a href="#" id='SamsungGalaxy4'>Samsung Galaxy </a></h3>
+                                <h3><a href="#" id='SamsungGalaxy4' class="produto">Samsung Galaxy </a></h3>
                                 <p>Price : <strong>$ 3,45,900</strong>  </p>
                                 <p><a href="#" id='p6'>Ptional dismiss button </a></p>
                                 <p>Ptional dismiss button in tional dismiss button in   </p>
@@ -407,7 +407,7 @@
                         <div class="thumbnail product-box">
                             <img src="<c:url value="/resources/assets/img/dummyimg.png" />" alt="" />
                             <div class="caption">
-                                <h3><a href="#" id='SamsungGalaxy5'>Samsung Galaxy </a></h3>
+                                <h3><a href="#" id='SamsungGalaxy5' class="produto">Samsung Galaxy </a></h3>
                                 <p>Price : <strong>$ 3,45,900</strong>  </p>
                                 <p><a href="#" id='p7'>Ptional dismiss button </a></p>
                                 <p>Ptional dismiss button in tional dismiss button in   </p>
@@ -420,7 +420,7 @@
                         <div class="thumbnail product-box">
                             <img src="<c:url value="/resources/assets/img/dummyimg.png" />" alt="" />
                             <div class="caption">
-                                <h3><a href="#" id='SamsungGalaxy6'>Samsung Galaxy </a></h3>
+                                <h3><a href="#" id='SamsungGalaxy6' class="produto">Samsung Galaxy </a></h3>
                                 <p>Price : <strong>$ 3,45,900</strong>  </p>
                                 <p><a href="#" id ='p8'>Ptional dismiss button </a></p>
                                 <p>Ptional dismiss button in tional dismiss button in   </p>
@@ -587,6 +587,7 @@
 			}
 			return "";
 		}
+		
 		$(document).ready(function(){ 
 			var browser_version= parseInt(navigator.appVersion);
 			var browser_type = navigator.appCodeName;
@@ -594,30 +595,29 @@
 			var d = new Date();
 			d.setTime(d.getTime() + (60*24*60*60*1000));
 			var expires = "expires="+ d.toUTCString();
+
+			var xhttp = new XMLHttpRequest();
+			
+			var infoNavegacao = '{"tipo":"navegacao", "info":"' + browser_type + browser_version + '", "user":"' + x + '"}';
+			xhttp.open("POST", "http://localhost:9090/tcc/navegacao");
+			xhttp.setRequestHeader("Content-Type", "application/json");
+			xhttp.send(infoNavegacao);
+			
 			if (x == ''){
 				document.cookie = "Username=Karol;" + expires + ";path=/";
 			}
 			
-			var salvarEvento = function(tipoEvento, idElemento) {
+			var salvarAcao = function(tipoEvento, idElemento) {
 				var xhttp = new XMLHttpRequest();
 				
-				var botaoPressionado = '{"tipo":"' + tipoEvento + '", "idElemento":"' + idElemento + '", "user":"' + x + '"}';
-				xhttp.open("POST", "http://localhost:9090/tcc/evento");
+				var acao = '{"tipo":"' + tipoEvento + '", "idElemento":"' + idElemento + '", "user":"' + x + '"}';
+				xhttp.open("POST", "http://localhost:9090/tcc/acao");
 				xhttp.setRequestHeader("Content-Type", "application/json");
-				xhttp.send(botaoPressionado);
-				
-				$.ajax({ 
-					data: {tipo: tipoEvento,
-						   id:idElemento,
-						   user:x}
-				});
+				xhttp.send(acao);
 			};
 			
-			$("button").click(function() { salvarEvento('clique', $(this).attr('id')) });
-			$("a").click(function() { salvarEvento('clique', $(this).attr('id')) });
-			
-			$("button").hover(function() { salvarEvento('hover', $(this).attr('id')) });
-			$("a").hover(function() { salvarEvento('hover', $(this).attr('id')) });
+			$(".produto").click(function() { salvarAcao('clique', $(this).attr('id')) });
+			$(".produto").hover(function() { salvarAcao('hover', $(this).attr('id')) });
 			
 		});
 	</script>

@@ -14,8 +14,6 @@ public class IndexController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String listar(Model model) {
-		log.info("aaa");
-		
 		return "index";
 	}
 }

@@ -10,7 +10,6 @@ import lombok.Data;
 public class Evento {
 	@Id
 	private String id;
-	private String idElemento;
 	private String tipo;
 	private String user;
 }
