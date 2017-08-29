@@ -27,9 +27,6 @@ public class NavegacaoController {
 	public ResponseEntity<?> regBotaoPressionado(@RequestBody Navegacao navegacao) {
 		navegacaoRepository.save(navegacao);
 
-		log.info("Info coletada:" + navegacao.getInfo() + ". Tipo Evento:" + navegacao.getTipo()
-				+ ". Id Evento:" + navegacao.getId());
-
 		return new ResponseEntity<>(navegacao.getId(), HttpStatus.OK);
 	}
 

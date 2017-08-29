@@ -564,6 +564,9 @@
     <!--Slider JavaScript file  -->
     <script src="<c:url value="/resources/assets/ItemSlider/js/modernizr.custom.63321.js" />"></script>
     <script src="<c:url value="/resources/assets/ItemSlider/js/jquery.catslider.js" />"></script>
+    
+    
+	<script src="<c:url value="/resources/js/jquery.inview.min.js" />"></script>
     <script>
         $(function () {
 
@@ -588,36 +591,164 @@
 			return "";
 		}
 		
+		function hover(idElemento) {
+			this.user = getCookie('Username');
+			this.idElemento = idElemento;
+			this.tipo = "hover";
+			this.horario = new Date();
+		}
+		
+		function clique(idElemento) {
+			this.user = getCookie('Username');
+			this.idElemento = idElemento;
+			this.tipo = "clique";
+			this.horario = new Date();
+		}
+		
+		function inview(idElemento) {
+			this.user = getCookie('Username');
+			this.idElemento = idElemento;
+			this.tempoTotal = 0;
+			this.inview = false;
+			this.tipo = "inview";
+			this.horario = new Date();
+		}
+		
+		function eventos() {
+			this.tempoEmTela = {};
+			this.hovers = [];
+			this.cliques = [];
+		}
+		
+		function salvar(object, action) {
+			if (jQuery.isEmptyObject(object))
+				return;
+			
+			var xhttp = new XMLHttpRequest();
+			
+			xhttp.open("POST", "http://localhost:9090/tcc/" + action);
+			xhttp.setRequestHeader("Content-Type", "application/json");
+			xhttp.send(JSON.stringify(object));
+		}
+
+		function navegacao(info) {
+			this.user = getCookie('Username');
+			this.info = info;
+			this.tipo = "navegacao";
+			this.horario = new Date();
+		}
+		
 		$(document).ready(function(){ 
 			var browser_version= parseInt(navigator.appVersion);
 			var browser_type = navigator.appCodeName;
-			var x = getCookie('Username');
+			var user = getCookie('Username');
 			var d = new Date();
 			d.setTime(d.getTime() + (60*24*60*60*1000));
 			var expires = "expires="+ d.toUTCString();
-
-			var xhttp = new XMLHttpRequest();
 			
-			var infoNavegacao = '{"tipo":"navegacao", "info":"' + browser_type + browser_version + '", "user":"' + x + '"}';
-			xhttp.open("POST", "http://localhost:9090/tcc/navegacao");
-			xhttp.setRequestHeader("Content-Type", "application/json");
-			xhttp.send(infoNavegacao);
-			
-			if (x == ''){
+			if (user == ''){
 				document.cookie = "Username=Karol;" + expires + ";path=/";
+				user = 'Karol';
 			}
 			
-			var salvarAcao = function(tipoEvento, idElemento) {
-				var xhttp = new XMLHttpRequest();
-				
-				var acao = '{"tipo":"' + tipoEvento + '", "idElemento":"' + idElemento + '", "user":"' + x + '"}';
-				xhttp.open("POST", "http://localhost:9090/tcc/acao");
-				xhttp.setRequestHeader("Content-Type", "application/json");
-				xhttp.send(acao);
-			};
+			// salvar navegacao inicial 
+			let infoNavegacao = new navegacao(browser_type + browser_version);
+			salvar(infoNavegacao, "navegacao");
+
 			
-			$(".produto").click(function() { salvarAcao('clique', $(this).attr('id')) });
-			$(".produto").hover(function() { salvarAcao('hover', $(this).attr('id')) });
+			// obj para salvar todos eventos
+			let eventosASalvar = new eventos();
+			
+			function salvarEventos() {
+				let nomeElementosVisiveis = [];
+				
+				for (let nomeElemento in eventosASalvar.tempoEmTela){
+					let tempoEmTelaElemento = eventosASalvar.tempoEmTela[nomeElemento];
+					if (eventosASalvar.tempoEmTela.hasOwnProperty(nomeElemento) && tempoEmTelaElemento.inview) {
+						pararContagemInview(tempoEmTelaElemento);
+						nomeElementosVisiveis.push(nomeElemento);
+					}
+				}
+				
+				salvar($.map(eventosASalvar.tempoEmTela, function(value, index) {return [value];}), "inview");
+				salvar(eventosASalvar.hovers, "acao");
+				salvar(eventosASalvar.cliques, "acao");
+				
+				eventosASalvar = new eventos();
+				
+				nomeElementosVisiveis.forEach(function(nomeElemento) {
+					eventosASalvar.tempoEmTela[nomeElemento] = new inview(nomeElemento);
+					iniciarContagemInview(eventosASalvar.tempoEmTela[nomeElemento]);
+				});
+			}
+			setInterval(salvarEventos, 10000);
+			
+			// secao para salvar elementos clicados/hover
+			$(".produto").click(function() { eventosASalvar.cliques.push(new clique($(this).attr('id'))) });
+			
+			$(".produto").hover(
+				function() {
+					let nomeElemento = $(this).attr('id');
+					setTimeoutConst = setTimeout(function() {
+						eventosASalvar.hovers.push(new hover(nomeElemento));
+					}, 5000);
+				},function(){
+					clearTimeout(setTimeoutConst);
+			   	}
+			);
+			
+
+			// seção para salvar elementos que estão sendo vistos
+			function iniciarContagemInview(elemento) {
+				elemento["horarioInicioInview"] = Date.now();
+				elemento["inview"] = true;
+			}
+			
+			function pararContagemInview(elemento) {
+				elemento["tempoTotal"] += Date.now() - elemento["horarioInicioInview"];
+				elemento["horarioInicioInview"] = undefined;
+			}
+		
+			$(".produto").on("inview", function(event, isInView) {
+				let nomeElemento = $(this).attr("id");
+				
+				if (eventosASalvar["tempoEmTela"][nomeElemento] == undefined) {
+					eventosASalvar["tempoEmTela"][nomeElemento] = new inview(nomeElemento);
+				}
+				
+				let tempoEmTelaElemento = eventosASalvar["tempoEmTela"][nomeElemento];
+				
+				if (isInView) {
+					iniciarContagemInview(eventosASalvar.tempoEmTela[nomeElemento]);
+				} else {
+					pararContagemInview(tempoEmTelaElemento);
+					tempoEmTelaElemento["inview"] = false;
+				}
+			});
+		
+			// parar contagem quando pagina sair de foco
+			$(window).blur(function() {
+				for (let nomeElemento in eventosASalvar["tempoEmTela"]) {
+					if (eventosASalvar["tempoEmTela"].hasOwnProperty(nomeElemento)) {
+						let tempoEmTelaElemento = eventosASalvar["tempoEmTela"][nomeElemento];
+						if (["inview"]) {
+							pararContagemInview(tempoEmTelaElemento);
+						}
+					}
+				}
+			});
+		
+			// voltar contagem quando pagina sair de foco
+			$(window).focus(function() {
+				for (var nomeElemento in eventosASalvar["tempoEmTela"]) {
+					if (eventosASalvar["tempoEmTela"].hasOwnProperty(nomeElemento)) {
+						let tempoEmTelaElemento = eventosASalvar["tempoEmTela"][nomeElemento];
+						if (tempoEmTelaElemento["inview"]) {
+							tempoEmTelaElemento["horarioInicioInview"] = Date.now();
+						}
+					}
+				}
+			});
 			
 		});
 	</script>

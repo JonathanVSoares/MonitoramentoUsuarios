@@ -1,5 +1,7 @@
 package ufpr.tads.monitorusuario.api.rest;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.slf4j.Logger;
@@ -24,13 +26,20 @@ public class AcaoController {
 	private AcoesRepository acoesRepository;
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<?> regBotaoPressionado(@RequestBody Acao acao) {
-		acoesRepository.save(acao);
+	public ResponseEntity<?> regAcoes(@RequestBody List<Acao> acaoList) {
+		acaoList = acoesRepository.save(acaoList);
 
-		log.info("Id elemento clicado:" + acao.getIdElemento() + ". Tipo Evento:" + acao.getTipo()
-				+ ". Id Evento:" + acao.getId());
-
-		return new ResponseEntity<>(acao.getId(), HttpStatus.OK);
+		return new ResponseEntity<>(acaoList, HttpStatus.OK);
 	}
+
+//	@RequestMapping(method = RequestMethod.POST)
+//	public ResponseEntity<?> regAcao(@RequestBody Acao acao) {
+//		acoesRepository.save(acao);
+//
+//		log.info("Id elemento clicado:" + acao.getIdElemento() + ". Tipo Evento:" + acao.getTipo()
+//				+ ". Id Evento:" + acao.getId());
+//
+//		return new ResponseEntity<>(acao.getId(), HttpStatus.OK);
+//	}
 
 }
