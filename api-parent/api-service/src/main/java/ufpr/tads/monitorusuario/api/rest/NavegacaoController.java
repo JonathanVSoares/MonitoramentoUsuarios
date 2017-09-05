@@ -24,7 +24,7 @@ public class NavegacaoController {
 	private NavegacaoRepository navegacaoRepository;
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<?> regBotaoPressionado(@RequestBody Navegacao navegacao) {
+	public ResponseEntity<?> regNavegacao(@RequestBody Navegacao navegacao) {
 		navegacaoRepository.save(navegacao);
 
 		return new ResponseEntity<>(navegacao.getId(), HttpStatus.OK);

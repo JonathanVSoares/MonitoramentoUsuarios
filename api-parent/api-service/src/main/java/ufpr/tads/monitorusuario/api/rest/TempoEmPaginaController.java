@@ -1,7 +1,5 @@
 package ufpr.tads.monitorusuario.api.rest;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.springframework.http.HttpStatus;
@@ -11,20 +9,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import ufpr.tads.monitorusuario.api.dao.AcoesRepository;
-import ufpr.tads.monitorusuario.api.model.Acao;
+import ufpr.tads.monitorusuario.api.dao.TempoEmPaginaRepository;
+import ufpr.tads.monitorusuario.api.model.TempoEmPagina;
 
-@RequestMapping("/acao")
+@RequestMapping("/tempoEmPagina")
 @RestController
-public class AcaoController {
+public class TempoEmPaginaController {
+
 	@Resource
-	private AcoesRepository acoesRepository;
+	private TempoEmPaginaRepository tempoEmPaginaRepository;
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<?> regAcoes(@RequestBody List<Acao> acaoList) {
-		acaoList = acoesRepository.save(acaoList);
+	public ResponseEntity<?> regTempoEmPagina(@RequestBody TempoEmPagina tempoEmPagina) {
+		tempoEmPagina = tempoEmPaginaRepository.save(tempoEmPagina);
 
-		return new ResponseEntity<>(acaoList, HttpStatus.OK);
+		return new ResponseEntity<>(tempoEmPagina, HttpStatus.OK);
 	}
-
 }

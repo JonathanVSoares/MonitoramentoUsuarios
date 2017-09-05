@@ -613,11 +613,20 @@
 			this.tipo = "inview";
 			this.horario = new Date();
 		}
+
+		function tempoNavegacao() {
+			this.user = getCookie('Username');
+			this.tempoInicio = Date.now();
+			this.tempoTotal = 0;
+			this.tipo = "tempoEmPagina";
+			this.horario = Date.now();
+		}
 		
 		function eventos() {
 			this.tempoEmTela = {};
 			this.hovers = [];
 			this.cliques = [];
+			this.tempoEmPagina = new tempoNavegacao();
 		}
 		
 		function salvar(object, action) {
@@ -642,19 +651,20 @@
 			var browser_version= parseInt(navigator.appVersion);
 			var browser_type = navigator.appCodeName;
 			var user = getCookie('Username');
-			var d = new Date();
-			d.setTime(d.getTime() + (60*24*60*60*1000));
-			var expires = "expires="+ d.toUTCString();
 			
 			if (user == ''){
-				document.cookie = "Username=Karol;" + expires + ";path=/";
-				user = 'Karol';
+				var d = new Date();
+				var date = d.getTime();
+				d.setTime(d.getTime() + (60*24*60*60*1000));
+				var expires = "expires="+ d.toUTCString();
+				document.cookie = "Username=" + date + ";" + expires + ";path=/";
+				user = date;
 			}
 			
 			// salvar navegacao inicial 
 			let infoNavegacao = new navegacao(browser_type + browser_version);
 			salvar(infoNavegacao, "navegacao");
-
+			
 			
 			// obj para salvar todos eventos
 			let eventosASalvar = new eventos();
@@ -673,6 +683,7 @@
 				salvar($.map(eventosASalvar.tempoEmTela, function(value, index) {return [value];}), "inview");
 				salvar(eventosASalvar.hovers, "acao");
 				salvar(eventosASalvar.cliques, "acao");
+				salvar(eventosASalvar.tempoEmPagina, "tempoEmPagina");
 				
 				eventosASalvar = new eventos();
 				
@@ -681,7 +692,16 @@
 					iniciarContagemInview(eventosASalvar.tempoEmTela[nomeElemento]);
 				});
 			}
-			setInterval(salvarEventos, 10000);
+			setInterval(salvarEventos, 60000);
+
+
+			// tempo de nagegação
+			let tempoEmPagina = new tempoNavegacao();
+			
+			$( window ).on('unload', function() {
+				eventosASalvar.tempoEmPagina.tempoTotal = Date.now() - eventosASalvar.tempoEmPagina.tempoInicio;
+				salvarEventos();
+			});
 			
 			// secao para salvar elementos clicados/hover
 			$(".produto").click(function() { eventosASalvar.cliques.push(new clique($(this).attr('id'))) });
