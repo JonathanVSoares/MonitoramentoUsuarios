@@ -596,6 +596,7 @@
 			this.idElemento = idElemento;
 			this.tipo = "hover";
 			this.horario = new Date();
+			this.pagina = location.pathname != "" ? location.pathname : "/home";
 		}
 		
 		function clique(idElemento) {
@@ -603,6 +604,7 @@
 			this.idElemento = idElemento;
 			this.tipo = "clique";
 			this.horario = new Date();
+			this.pagina = location.pathname != "" ? location.pathname : "/home";
 		}
 		
 		function inview(idElemento) {
@@ -612,6 +614,7 @@
 			this.inview = false;
 			this.tipo = "inview";
 			this.horario = new Date();
+			this.pagina = location.pathname != "" ? location.pathname : "/home";
 		}
 
 		function tempoNavegacao() {
@@ -620,6 +623,15 @@
 			this.tempoTotal = 0;
 			this.tipo = "tempoEmPagina";
 			this.horario = Date.now();
+			this.pagina = location.pathname != "" ? location.pathname : "/home";
+		}
+
+		function navegacao(info) {
+			this.user = getCookie('Username');
+			this.info = info;
+			this.tipo = "navegacao";
+			this.horario = new Date();
+			this.pagina = location.pathname != "" ? location.pathname : "/home";
 		}
 		
 		function eventos() {
@@ -638,13 +650,6 @@
 			xhttp.open("POST", "http://localhost:9090/tcc/" + action);
 			xhttp.setRequestHeader("Content-Type", "application/json");
 			xhttp.send(JSON.stringify(object));
-		}
-
-		function navegacao(info) {
-			this.user = getCookie('Username');
-			this.info = info;
-			this.tipo = "navegacao";
-			this.horario = new Date();
 		}
 		
 		$(document).ready(function(){ 

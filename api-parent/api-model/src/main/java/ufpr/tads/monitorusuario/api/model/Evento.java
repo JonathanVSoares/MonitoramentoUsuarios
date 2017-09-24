@@ -15,4 +15,5 @@ public abstract class Evento {
 	private String tipo;
 	private String user;
 	private Date horario;
+	private String pagina;
 }

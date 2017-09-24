@@ -1,12 +1,12 @@
-package ufpr.tads.monitorusuario.api;
+package ufpr.tads.monitorusuario.dashboard;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ServletCore  {
+public class ServletCoreDashboard  {
 
 	public static void main(String[] args) {
-        SpringApplication.run(ServletCore.class, args);
+        SpringApplication.run(ServletCoreDashboard.class, args);
     }
 }

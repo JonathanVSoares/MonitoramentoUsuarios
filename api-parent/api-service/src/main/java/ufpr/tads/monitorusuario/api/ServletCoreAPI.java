@@ -1,0 +1,12 @@
+package ufpr.tads.monitorusuario.api;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class ServletCoreAPI  {
+
+	public static void main(String[] args) {
+        SpringApplication.run(ServletCoreAPI.class, args);
+    }
+}
