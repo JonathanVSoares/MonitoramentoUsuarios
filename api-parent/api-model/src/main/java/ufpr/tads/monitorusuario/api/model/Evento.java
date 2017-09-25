@@ -16,4 +16,5 @@ public abstract class Evento {
 	private String user;
 	private Date horario;
 	private String pagina;
+	private String sessao;
 }

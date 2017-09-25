@@ -90,7 +90,7 @@
 							</div>
 							<div class='col-md-3 col-sm-6'>
 								Sessões
-								<h3>18.450</h3>
+								<h3 id="numSessoesGrafComparacoes"></h3>
 								<p style='color: #cf2a27'>
 									<span class="glyphicon glyphicon-arrow-down"></span> 1%
 								</p>
