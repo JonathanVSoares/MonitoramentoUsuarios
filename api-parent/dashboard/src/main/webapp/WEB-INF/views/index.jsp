@@ -76,7 +76,7 @@
 							<div class='col-md-3 col-sm-6'
 								style='border-style: solid; border-color: #ffd600 #dddddd #dddddd #dddddd;'>
 								VisualizaÁıes
-								<h3>137.450</h3>
+								<h3 id="numVizualizacoesGrafComparacoes"></h3>
 								<p style='color: #009e0f'>
 									<span class="glyphicon glyphicon-arrow-up"></span> 2.5%
 								</p>
@@ -436,7 +436,7 @@
 					</div>
 					<div class='row'>
 						<div class='col-md-10 col-sm-12'>
-							<p style='color: #a3a3a3'>ARM√ÅRIO BRANCO</p>
+							<p style='color: #a3a3a3'>ARM¡RIO BRANCO</p>
 						</div>
 						<div class='col-md-1 col-sm-12'>
 							<p style='color: #a3a3a3'>70%</p>

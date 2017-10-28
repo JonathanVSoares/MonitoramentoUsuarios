@@ -1,5 +1,11 @@
 function refreshNumSessoes() {
 	$.ajax({
+		url: "http://localhost:7070/tcc/dashboardData/numVisualizacoes/ultimosDias"
+	}).done(function(data) {
+		$("#numVizualizacoesGrafComparacoes").text(data);
+	});
+	
+	$.ajax({
 		url: "http://localhost:7070/tcc/dashboardData/numUsuarios/ultimosDias"
 	}).done(function(data) {
 		$("#numUsuariosGrafComparacoes").text(data);
