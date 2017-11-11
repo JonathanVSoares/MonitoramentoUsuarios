@@ -7,7 +7,7 @@
 	<description>API Model</description>
 
 	<parent>
-		<groupId>ufpr.tads.monitorusuario.api</groupId>
+		<groupId>eeye</groupId>
 		<artifactId>api-parent</artifactId>
 		<version>0.0.1</version>
 	</parent>

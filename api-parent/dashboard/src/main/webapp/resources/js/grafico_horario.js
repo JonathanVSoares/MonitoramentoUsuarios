@@ -36,8 +36,6 @@ function updateData(grafico, hours) {
 		
 		grafico.series[0].data = dadosGrafico;
 		grafico.visualMap.max = maxAcessos;
-		
-		console.log(grafico);
 
 		var myChart = echarts.init(document.getElementById('main2'));
 		myChart.setOption(grafico);

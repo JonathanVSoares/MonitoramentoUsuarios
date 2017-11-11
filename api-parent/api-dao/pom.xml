@@ -7,7 +7,7 @@
 	<description>Data access project</description>
 
 	<parent>
-		<groupId>ufpr.tads.monitorusuario.api</groupId>
+		<groupId>eeye</groupId>
 		<artifactId>api-parent</artifactId>
 		<version>0.0.1</version>
 	</parent>
@@ -15,7 +15,7 @@
 	<dependencies>
 		<!-- Model -->
 		<dependency>
-			<groupId>ufpr.tads.monitorusuario.api</groupId>
+			<groupId>eeye</groupId>
 			<artifactId>api-model</artifactId>
 			<version>${api-version}</version>
 		</dependency>

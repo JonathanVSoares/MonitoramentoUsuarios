@@ -118,7 +118,7 @@ var option = {
 
 let diasGrafico = 7; // get from select in html
 
-atualizarDadosGraficoComparacoes(option, 7);
+atualizarDadosGraficoComparacoes(option, diasGrafico);
 
 // use configuration item and data specified to show chart
 myChart.setOption(option);

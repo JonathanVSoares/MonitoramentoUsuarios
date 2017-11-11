@@ -33,7 +33,7 @@
 	<div class='body'>
 		<br />
 		<div class='row'>
-			<div class='col-md-2 col-sm-12'>
+			<div class='col-md-2 col-sm-12' style='padding-left:1%'>
 				<ul class="list-group">
 					<a href='#' class="list-group-item list-group-item-dark"
 						id='selecionado'><span class="glyphicon glyphicon-home"></span>
@@ -47,8 +47,8 @@
 				</ul>
 			</div>
 			<div class='col-md-10 col-sm-12'>
-				<div class='row'>
-					<div class='col-md-6 col-sm-12  panel panel-default'>
+				<div class='row row-same-height'>
+					<div class='col-md-6 col-sm-12  panel panel-default col-sm-height'>
 						<div class='row'>
 							<div class='col-md-8 col-sm-12'>
 								<br /> <img
@@ -57,7 +57,7 @@
 							</div>
 							<div class='col-md-4 col-sm-12'>
 								<br />
-								<div class="dropdown">
+								<!--<div class="dropdown">
 									<button class="btn btn-default dropdown-toggle" type="button"
 										data-toggle="dropdown">
 										Últimos 7 dias <span class="caret"></span>
@@ -68,11 +68,11 @@
 										<li><a href="#">Último ano</a></li>
 										<li><a href="#">Todo o período</a></li>
 									</ul>
-								</div>
+								</div>-->
 							</div>
 						</div>
 						<hr />
-						<div class="row">
+						<div class="row" style='padding:1%'>
 							<div class='col-md-3 col-sm-6'
 								style='border-style: solid; border-color: #ffd600 #dddddd #dddddd #dddddd;'>
 								Visualizações
@@ -108,14 +108,14 @@
 						<script
 							src="<c:url value="/resources/js/grafico_comparacoes.js" />"></script>
 					</div>
-					<div class='col-md-3 col-sm-12 panel panel-default'>
+					<div class='col-md-3 col-sm-12 panel panel-default col-sm-height'>
 						<div class='row'>
 							<div class='col-md-5 col-sm-12'>
 								<br />HORÁRIO
 							</div>
 							<br />
 							<div class='col-md-7 col-sm-12'>
-								<div class="dropdown">
+								<!--<div class="dropdown">
 									<button class="btn btn-default dropdown-toggle" type="button"
 										data-toggle="dropdown">
 										Últimos 7 dias <span class="caret"></span>
@@ -126,7 +126,7 @@
 										<li><a href="#">Último ano</a></li>
 										<li><a href="#">Todo o período</a></li>
 									</ul>
-								</div>
+								</div>-->
 							</div>
 						</div>
 						<hr />
@@ -134,7 +134,7 @@
 						<script type="text/javascript"
 							src="<c:url value="/resources/js/grafico_horario.js" />"></script>
 					</div>
-					<div class='col-md-3 col-sm-12 panel panel-default'
+					<div class='col-md-3 col-sm-12 panel panel-default col-sm-height'
 						style='background-color: #09395f'>
 						<br />
 						<p style='color: white'>SESSÕES NO MOMENTO</p>
@@ -176,15 +176,18 @@
 				</div>
 			</div>
 			<br />
-			<div class='col-md-2 col-sm-12'></div>
-			<div class='col-md-2 col-sm-12 panel panel-default'>
+		</div>
+		<br/>
+		<div class='row row-same-height2'>
+			<div class='col-md-2 col-sm-12 col-sm-height2'></div>
+			<div class='col-md-2 col-sm-12 panel panel-default col-sm-height2'>
 				<div class='row'>
 					<div class='col-md-4 col-sm-12'>
 						<br />PERFIL
 					</div>
 					<div class='col-md-3 col-sm-12'>
 						<br />
-						<div class="dropdown">
+						<!--<div class="dropdown">
 							<button class="btn btn-default dropdown-toggle" type="button"
 								data-toggle="dropdown">
 								Últimos 7 dias <span class="caret"></span>
@@ -195,7 +198,7 @@
 								<li><a href="#">Último ano</a></li>
 								<li><a href="#">Todo o período</a></li>
 							</ul>
-						</div>
+						</div>-->
 					</div>
 				</div>
 				<hr />
@@ -251,14 +254,14 @@
 				</table>
 
 			</div>
-			<div class='col-md-3 col-sm-12 panel panel-default'>
+			<div class='col-md-3 col-sm-12 panel panel-default col-sm-height2'>
 				<div class='row'>
 					<div class='col-md-6 col-sm-12'>
 						<br /> DISPOSITIVOS
 					</div>
 					<div class='col-md-3 col-sm-12'>
 						<br />
-						<div class="dropdown">
+						<!--<div class="dropdown">
 							<button class="btn btn-default dropdown-toggle" type="button"
 								data-toggle="dropdown">
 								Últimos 7 dias <span class="caret"></span>
@@ -269,7 +272,7 @@
 								<li><a href="#">Último ano</a></li>
 								<li><a href="#">Todo o período</a></li>
 							</ul>
-						</div>
+						</div>-->
 					</div>
 				</div>
 				<hr />
@@ -282,9 +285,9 @@
 						<center>
 							<img src="<c:url value="/resources/svg/si-glyph-desktop.svg" />"
 								style='width: 50%; height: 50%;' /> <br /> Desktop
-							<h4>89,2%</h4>
-							<p style='color: #cf2a27'>
-								<span class="glyphicon glyphicon-arrow-down"></span> 0.5%
+							<h4 id = "porcentagemDesktop"></h4>
+							<p style='color: #009e0f' id="porcentagemAnteriorDesktop">
+								<span class="glyphicon glyphicon-arrow-down"></span>%
 							</p>
 						</center>
 					</div>
@@ -293,30 +296,30 @@
 							<img
 								src="<c:url value="/resources/svg/si-glyph-smartphone.svg" />"
 								style='width: 50%; height: 50%;' /> <br /> Celular
-							<h4>10%</h4>
-							<p style='color: #009e0f'>
-								<span class="glyphicon glyphicon-arrow-up"></span> 0.5%
+							<h4 id = "porcentagemCelular"></h4>
+							<p style='color: #009e0f' id="porcentagemAnteriorCelular">
+								<span class="glyphicon glyphicon-arrow-up"></span>%
 							</p>
 					</div>
 					<div class='col-md-4 col-sm-4'>
 						<center>
 							<img src="<c:url value="/resources/svg/si-glyph-tablet.svg" />"
 								style='width: 50%; height: 50%;' /> <br /> Tablet
-							<h4>10%</h4>
-							<p style='color: #009e0f'>
-								<span class="glyphicon glyphicon-arrow-up"></span> 0.5%
+							<h4 id = "porcentagemTablet"></h4>
+							<p style='color: #009e0f' id="porcentagemAnteriorTablet">
+								<span class="glyphicon glyphicon-arrow-up"></span>%
 							</p>
 					</div>
 				</div>
 			</div>
-			<div class='col-md-5 col-sm-4 panel panel-default'>
+			<div class='col-md-5 col-sm-4 panel panel-default col-sm-height2'>
 				<div class='row'>
 					<div class='col-md-8 col-sm-4'>
 						<br />LOCALIZAÇÃO DAS SESSÕES
 					</div>
 					<div class='col-md-4 col-sm-4'>
 						<br />
-						<div class="dropdown">
+						<!--<div class="dropdown">
 							<button class="btn btn-default dropdown-toggle" type="button"
 								data-toggle="dropdown">
 								Últimos 7 dias <span class="caret"></span>
@@ -327,7 +330,7 @@
 								<li><a href="#">Último ano</a></li>
 								<li><a href="#">Todo o período</a></li>
 							</ul>
-						</div>
+						</div>-->
 					</DIV>
 				</div>
 				<hr />
@@ -354,7 +357,7 @@
 						</div>
 						<div class='col-md-5 col-sm-12'>
 							<br />
-							<div class="dropdown">
+							<!--<div class="dropdown">
 								<button class="btn btn-default dropdown-toggle" type="button"
 									data-toggle="dropdown">
 									Últimos 7 dias <span class="caret"></span>
@@ -365,48 +368,24 @@
 									<li><a href="#">Todo o período</a></li>
 									<li><a href="#">Último ano</a></li>
 								</ul>
-							</div>
+							</div>-->
 						</div>
 					</div>
 					<p style='color: #a3a3a3'>TOTAL DE PÁGINAS VISITADAS</p>
 					<div class="progress">
 						<div class="progress-bar" role="progressbar" aria-valuenow="70"
-							aria-valuemin="0" aria-valuemax="100" style="width: 70%"></div>
+							aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
 					</div>
 					<div class='row'>
 						<div class='col-md-10 col-sm-12'>
-							<p style='color: #a3a3a3'>HOME</p>
+							<p style='color: #a3a3a3'>INDEX</p>
 						</div>
 						<div class='col-md-1 col-sm-12'>
-							<p style='color: #a3a3a3'>70%</p>
+							<p style='color: #a3a3a3'>100%</p>
 						</div>
 					</div>
 					<br />
-					<div class="progress">
-						<div class="progress-bar" role="progressbar" aria-valuenow="30"
-							aria-valuemin="0" aria-valuemax="100" style="width: 30%"></div>
-					</div>
-					<div class='row'>
-						<div class='col-md-10 col-sm-12'>
-							<p style='color: #a3a3a3'>PESQUISAR</p>
-						</div>
-						<div class='col-md-1 col-sm-12'>
-							<p style='color: #a3a3a3'>30%</p>
-						</div>
-					</div>
-					<br />
-					<div class="progress">
-						<div class="progress-bar" role="progressbar" aria-valuenow="6"
-							aria-valuemin="0" aria-valuemax="100" style="width: 6%"></div>
-					</div>
-					<div class='row'>
-						<div class='col-md-10 col-sm-12'>
-							<p style='color: #a3a3a3'>BLOG</p>
-						</div>
-						<div class='col-md-1 col-sm-12'>
-							<p style='color: #a3a3a3'>6%</p>
-						</div>
-					</div>
+		
 				</div>
 				<div class='col-md-4 col-sm-12 panel panel-default'>
 					<div class='row'>
@@ -415,7 +394,7 @@
 						</div>
 						<div class='col-md-5 col-sm-12'>
 							<br />
-							<div class="dropdown">
+							<!--<div class="dropdown">
 								<button class="btn btn-default dropdown-toggle" type="button"
 									data-toggle="dropdown">
 									Últimos 7 dias <span class="caret"></span>
@@ -426,7 +405,7 @@
 									<li><a href="#">Todo o período</a></li>
 									<li><a href="#">Último ano</a></li>
 								</ul>
-							</div>
+							</div>-->
 						</div>
 					</div>
 					<p style='color: #a3a3a3'>TOTAL DE PESQUISAS</p>
