@@ -172,23 +172,24 @@ data-ec-name="Am|73509"
 data-ec-position="1"
 data-ec-price=""
 data-ec-variant="1"
-class="item-ambiente ambiente lkd-box-ambiente"> <a href="#" class="lkd-product-box__wishlist" id="whish73509"
+class="item-ambiente ambiente lkd-box-ambiente produto-eeye" title="${f.nome}"> <a href="#" class="lkd-product-box__wishlist" id="whish73509"
 data-ec-wishlist-id="73509"
 onclick="trackEvent(['Listagem','Adicionar_a_minha_lista','73509']);"> <i class="lkd-product-box__wishlist-icon lkd-icon lkd-icon--heart"> </i> </a> <a data-ec-click="viewDetails"
 href="https://www.lojaskd.com.br/quarto-de-casal-modulado-completo-smart-branco-kappesberg-73509.html?ec_p_list=1"
 title="${f.nome}"> <div class="product left"> <div class="imagem-produto" data-ec-click="viewDetails" data-event-category="Listagem"
 data-event-action="produto-images" data-event-label=""
 data-event-value="73509" data-event> <div class="box_selos right"> <div class="clearfix"> </div> </div> <img class="lazy" alt="produto"
-src="//assets.lojaskd.com.br/releases/production/dist/images/pixel.gif"
-data-original="//assets.lojaskd.com.br/73500/73509/73509_9_lst_90.jpg"
+src="<c:url value="/resources/imagem/${f.id}_lst.jpg"/>"
+data-original="<c:url value="/resources/imagem/${f.id}_lst.jpg"/>"
 data-webp="//assets.lojaskd.com.br/73500/73509/73509_9_lst_90.webp"> <div class="show-me-more"> <span> Saiba mais!</span> <div class="buttons arrow"> </div> </div> </div> <div class="product-info left" data-event-category="Listagem" data-event-action="produto-descricao"
 data-event-label="" data-event-value="73509" data-event> <p class="product-name nowrap-listagem"> ${f.nome}</p> <!--googleoff: all--> <div class="box-prices"> <p class="preco"> <span class="preco-de bold"> </span> 
 Por: <strong class="preco-a-vista"> R$</strong>  <span>  à vista </span> </p> <p class="opcao-pagamento-a-vista"> 
 Ou: <span class="preco-por bold"> </span>  <span>  em até </span> </p> <p class="opcao-pagamento"> <span class="qtd-parcela bold font12"> x</span> 
-De: <strong class="preco-parcelado bold"> R$</strong> <span style="color:grey">  s/juros</span> </p> </div> <!--googleon: all--> <div class="extra-info hidden"> </div> </div> </div> </a> </div>  <div class="navigation navigationfooter"> <div class="viewed-pagesfooter left"> 
+De: <strong class="preco-parcelado bold"> R$</strong> <span style="color:grey">  s/juros</span> </p> </div> <!--googleon: all--> <div class="extra-info hidden"> </div> </div> </div> </a> </div>  
 
 </c:forEach>         
-                
+
+<div class="navigation navigationfooter"> <div class="viewed-pagesfooter left">                 
 Mostrando 1 - 48 de 313 móveis</div> <div class="number-pages"> <ul class="nav"> <li> <label> Página</label> </li> <li> <input type="text" name="current_page" readonly value="1"> </input> </li> <li> <label> de 7</label> </li> <li> <a class="fetch buttons nextPage" href="https://www.lojaskd.com.br/modulados/quarto/p2/"> </a> </li> <li> <a class="fetch buttons lastPage" href="https://www.lojaskd.com.br/modulados/quarto/p7/"> </a> </li> </ul> </div> <div class="clearfix"> </div> </div> </div> <div class="box-seo-listagem"> <p> Na hora de descansar tudo o que queremos é ficar bem à vontade em nosso Quarto, não é? É por lá que repomos
 nossas energias e relaxamos. Por essas e outras funções que damos ao nosso cantinho, é importante criarmos uma
 decoração bonita e contarmos com móveis funcionais para termos um ambiente tranquilo e aproveitarmos ele ao
@@ -269,4 +270,7 @@ var google_conversion_label = "xQxGCLLPxAIQ_qCX6QM";
 var google_conversion_value = 0;
 var google_custom_params = {
 };
-var google_remarketing_only = true;</script> <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"> </script> <noscript> <div style="display:inline;"> <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/1025888382/?label=xQxGCLLPxAIQ_qCX6QM&amp;guid=ON&amp;script=0"/> </div> </noscript> <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"aa62a0219f","applicationID":"32273587,32273588","transactionName":"MVABZxcDChIEUkBRCwgaIlARCwsPSnxbTgEPRkxaCwYBGQ==","queueTime":0,"applicationTime":113,"atts":"HRcWEV8ZGU1HUBYCHxtI","errorBeacon":"bam.nr-data.net","agent":""}</script></body> </html> 
+var google_remarketing_only = true;</script> <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"> </script> <noscript> <div style="display:inline;"> <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/1025888382/?label=xQxGCLLPxAIQ_qCX6QM&amp;guid=ON&amp;script=0"/> </div> </noscript> <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"aa62a0219f","applicationID":"32273587,32273588","transactionName":"MVABZxcDChIEUkBRCwgaIlARCwsPSnxbTgEPRkxaCwYBGQ==","queueTime":0,"applicationTime":113,"atts":"HRcWEV8ZGU1HUBYCHxtI","errorBeacon":"bam.nr-data.net","agent":""}</script>
+<script src="<c:url value="/resources/js/jquery.inview.min.js"/>"></script>
+<script src="<c:url value="/resources/js/eeye.js"/>"></script>
+</body> </html> 

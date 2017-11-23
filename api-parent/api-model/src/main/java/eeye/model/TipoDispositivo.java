@@ -1,5 +1,5 @@
 package eeye.model;
 
 public enum TipoDispositivo {
-	TABLET, DESKTOP, CELULAR
+	TABLET, DESKTOP, CELULAR, NOTEBOOK
 }

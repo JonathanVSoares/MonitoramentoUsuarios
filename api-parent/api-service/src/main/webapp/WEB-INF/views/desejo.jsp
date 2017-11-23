@@ -653,7 +653,7 @@ Para saber mais, visite: https://www.lojaskd.com.br/trabalhe-conosco/
                                     <article id="134976" class="lkd-product-box produto" data-ec-price="662,90" data-ec-wishlist-id="134976">
                         <figure class="lkd-product-box__thumb">
                             <a href="/painel-para-tv-ate-50-polegadas-2-gavetas-com-led-e-espelho-tb106-100-mdf-nobre-fendi-dalla-costa-134976.html" title="Painel para TV até 50 Polegadas 2 Gavetas com LED e Espelho TB106 100% MDF 180 x 140 x 40 Nobre/Fendi - Dalla Costa" onclick="trackEvent(['lista-desejos','produto', '134976']);">
-                                <img class="lkd-product-box__img lazy" src="//assets.lojaskd.com.br/134900/134976/134976_19_lst_190.jpg" alt="Painel para TV até 50 Polegadas 2 Gavetas com LED e Espelho TB106 100% MDF 180 x 140 x 40 Nobre/Fendi - Dalla Costa">
+                                <img class="lkd-product-box__img lazy" src="<c:url value="/resources/imagem/${f.id}_lst.jpg"/>" alt="Painel para TV até 50 Polegadas 2 Gavetas com LED e Espelho TB106 100% MDF 180 x 140 x 40 Nobre/Fendi - Dalla Costa">
                             </a>
                         </figure>
                         <header class="lkd-product-box__header">

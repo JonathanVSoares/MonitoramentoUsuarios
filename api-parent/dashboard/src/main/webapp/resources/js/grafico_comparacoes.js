@@ -69,13 +69,13 @@ function atualizarDadosGraficoComparacoes(url, complUrl, dias, idGrafico, idNumT
 		}).done(function(dataAnterior) {
 			let total = getTotalGrafComp(data);
 			let totalAnterior = getTotalGrafComp(dataAnterior);
-
-			console.log(diasAnteriores[0]);
-			console.log(diasAnteriores[1]);
+			
+			if (nomeDados == "Visualizações") {
+				console.log(total);
+				console.log(totalAnterior);
+			}
 			
 			let diferencaPorc = ((100 * total) / totalAnterior) - 100;
-			
-			console.log(diferencaPorc);
 
 			let elementoPorcentagem = $(idPercent);
 			if (diferencaPorc < 0) {

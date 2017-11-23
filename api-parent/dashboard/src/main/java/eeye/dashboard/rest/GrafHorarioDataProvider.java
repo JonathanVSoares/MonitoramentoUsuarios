@@ -1,40 +1,36 @@
 package eeye.dashboard.rest;
 
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import eeye.dao.NavegacaoRepository;
 import eeye.dashboard.domain.NumAcessoHorarioSemana;
+import eeye.dashboard.utils.DateUtils;
 import eeye.model.Navegacao;
 
 @RestController
-@RequestMapping("/dashboardData/horario")
+@RequestMapping("/dashboardData")
 public class GrafHorarioDataProvider {
-
 	@Autowired
-	MongoTemplate mongoTemplate;
+	private NavegacaoRepository navegacaoRepository;
 
-	@RequestMapping(method = RequestMethod.GET, value = "/ultimosDias")
-	public ResponseEntity<List<NumAcessoHorarioSemana>> dadosHorarioUltimosDias() {
-		ZonedDateTime date = LocalDateTime.now().atZone(ZoneId.systemDefault()).minusDays(7).withHour(0).withMinute(0)
-				.withSecond(0);
-		Date desdeXDias = Date.from(date.toInstant());
+	@RequestMapping(method = RequestMethod.GET, value = "/horario")
+	public ResponseEntity<List<NumAcessoHorarioSemana>> dadosHorarioUltimosDias(@RequestParam(value = "diasInicio") int diasInicio,
+			@RequestParam(value = "diasFim") int diasFim) {
+		Date dataInicio = DateUtils.pegarDataMenosXDias(diasInicio);
+		Date dataFim = DateUtils.pegarDataMenosXDias(diasFim);
 
-		List<Navegacao> eventos = pegarEventosDesde("navegacao", desdeXDias);
+		List<Navegacao> eventos = navegacaoRepository.findByHorarioBetween(dataFim, dataInicio);
 
 		List<NumAcessoHorarioSemana> acessos = new ArrayList<>();
 		
@@ -90,12 +86,4 @@ public class GrafHorarioDataProvider {
 			return "22:00";
 		}
 	}
-
-	private List<Navegacao> pegarEventosDesde(String tipoEvento, Date desde) {
-		Query query = new Query();
-		query.addCriteria(Criteria.where("horario").gt(desde).and("tipo").is(tipoEvento));
-
-		return mongoTemplate.find(query, Navegacao.class);
-	}
-	
 }

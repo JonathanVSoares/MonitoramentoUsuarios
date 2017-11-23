@@ -832,7 +832,7 @@ ga('send', 'event', eventName, eventBannerName, eventUrl, {
                         <tr>
                             <td width="110">
                                                                                                 <a href="https://www.lojaskd.com.br/cantoneira-modulada-a548-smart-100-mdf-branco-kappesberg-73446.html">
-                                    <img src="//imagens.lojaskd.com.br/73400/73446/73446_8_lst_80.jpg" alt="Cantoneira Modulada A548 Smart  100% MDF Branco - Kappesberg" class="img" style="width: 100px;"/>
+                                    <img src="<c:url value="/resources/imagem/${f.id}_lst.jpg"/>" alt="/resources/imagem/${f.id}_lst.jpg" class="img" style="width: 100px;"/>
                                 </a>
                             </td>
                             <td>

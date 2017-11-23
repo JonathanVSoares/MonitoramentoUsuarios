@@ -13,9 +13,9 @@ function encontrarIndexHorario(horario, hours) {
 }
 
 // specify chart configuration item and data
-function updateData(grafico, hours) {
+function updateData(grafico, hours, dias) {
 	$.ajax({
-		url: "http://localhost:7070/tcc/dashboardData/horario/ultimosDias"
+		url: "http://localhost:7070/tcc/dashboardData/horario/?diasInicio=-1&diasFim=" + (dias-1)
 	}).done(function(data) {
 		var dadosGrafico = [];
 		let maxAcessos = 0;
@@ -43,7 +43,7 @@ function updateData(grafico, hours) {
 }
 
 
-var option = {
+var graficoHorario = {
 	tooltip: {
 		position: 'top'
 	},
@@ -91,4 +91,10 @@ var option = {
 	}]
 };
 
-updateData(option, hours);
+updateData(graficoHorario, hours, 7);
+
+
+$("#dropdown-horario .valor-dropdown").click(function() {
+	let dias = $(this).attr("data-value");
+	updateData(graficoHorario, hours, dias);
+});

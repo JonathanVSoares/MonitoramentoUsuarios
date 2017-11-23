@@ -21,13 +21,13 @@ public class SessaoHelper {
 	private NavegacaoRepository repo;
 
 	public String getSessao(String user) {
-		ZonedDateTime date = LocalDateTime.now().atZone(ZoneId.systemDefault()).minusMinutes(10);
+		ZonedDateTime date = LocalDateTime.now().atZone(ZoneId.systemDefault()).minusMinutes(30);
 		
-		Date desde10Min = Date.from(date.toInstant());
+		Date desde = Date.from(date.toInstant());
 		
-		Navegacao evento = repo.findByUserAndHorarioGreaterThan(user, desde10Min);
+		Navegacao evento = repo.findByUserAndHorarioGreaterThan(user, desde);
 		
-		// se houve evento em 10 min, há sessão atual
+		// se houve evento em 30 min, há sessão atual
 		if (evento == null) {
 			return user + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddhhmmss"));
 		} else {

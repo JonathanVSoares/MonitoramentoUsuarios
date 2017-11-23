@@ -1,5 +1,7 @@
 package eeye.model;
 
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -13,4 +15,5 @@ public abstract class Evento {
 	private String tipo;
 	private String user;
 	private String sessao;
+	private Date horario;
 }

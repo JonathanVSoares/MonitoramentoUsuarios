@@ -11,4 +11,6 @@ import eeye.model.TipoDispositivo;
 public interface NavegacaoRepository extends MongoRepository<Navegacao, String> {
 	Navegacao findByUserAndHorarioGreaterThan(String user, Date horario);
 	List<Navegacao> findByTipoDispositivoAndHorarioBetween(TipoDispositivo tipo, Date diaFim, Date diaInicio);
+	List<Navegacao> findByHorarioBetween(Date diaFim, Date diaInicio);
+	List<Navegacao> findByHorarioBetweenAndPaisNot(Date diaFim, Date diaInicio, String pais);
 }
