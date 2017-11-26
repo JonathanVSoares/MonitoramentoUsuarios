@@ -30,4 +30,12 @@ public class AcaoController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
+	@RequestMapping(method = RequestMethod.POST, value="/unico")
+	public ResponseEntity<?> regAcoes(@RequestBody Acao acao) {
+		sessaoHelper.incluirSessaoAtual(acao);
+		acoesRepository.save(acao);
+
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+
 }

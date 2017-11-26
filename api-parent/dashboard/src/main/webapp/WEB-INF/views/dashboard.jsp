@@ -53,7 +53,7 @@
 			<div class="menu-list">
 
 				<ul id="menu-content" class="menu-content collapse active">
-					<li class="active"><a href="index.html"> <i
+					<li class="active"><a href="dashboard"> <i
 							class="fa fa-home"></i> Dashboard
 					</a></li>
 
@@ -62,18 +62,17 @@
 							class="arrow"></span></a>
 					</li>
 					<ul class="sub-menu collapse" id="publico">
-						<li><a href="#">Tecnologia</a></li>
-						<li><a href="#">Localização</a></li>
-						<li><a href="#">Tempo</a></li>
+						<li><a href="/tcc/tecnologia">Tecnologia</a></li>
+						<li><a href="/tcc/localizacao">Localização</a></li>
+						<li><a href="/tcc/horario">Horário</a></li>
 					</ul>
 					<li data-toggle="collapse" data-target="#comportamento"
 						class="collapsed" style="border-bottom: 0px;"><a href="#"><i
 							class="fa fa-lightbulb-o"></i> Comportamento <span class="arrow"></span></a>
 					</li>
 					<ul class="sub-menu collapse" id="comportamento">
-						<li><a href="#">Buscas</a></li>
-						<li><a href="#">Páginas</a></li>
-						<li><a href="#">Eventos</a></li>
+						<li><a href="/tcc/buscas">Buscas</a></li>
+						<li><a href="/tcc/paginasEventos">Páginas e Eventos</a></li>
 					</ul>
 				</ul>
 			</div>

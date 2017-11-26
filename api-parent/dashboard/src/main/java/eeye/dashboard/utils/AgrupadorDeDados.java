@@ -78,8 +78,9 @@ public class AgrupadorDeDados {
 
 	public Map<String, Integer> agruparSessoesUnicasPorCampo(List<Navegacao> navegacoes,
 			CampoParaAgrupar retornaCampo) {
-		Map<String, Integer> totaisComUser = agruparTotaisSessoesPorCampo(navegacoes, (navegacao) -> retornaCampo
-				.getCampoPraAgrupar(navegacao).concat(SEPARADOR).concat(navegacao.getUser()));
+		Map<String, Integer> totaisComUser = agruparTotaisSessoesPorCampo(navegacoes, (navegacao) -> {
+			return retornaCampo.getCampoPraAgrupar(navegacao).concat(SEPARADOR).concat(navegacao.getUser());
+		});
 
 		totaisComUser.entrySet().removeIf((entry) -> entry.getValue() > 1);
 

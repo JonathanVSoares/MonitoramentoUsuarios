@@ -15,7 +15,7 @@ import eeye.dashboard.utils.ProvedorDeDados;
 
 @RestController
 @RequestMapping("/dashboardData/tecnologia")
-public class TecnologiaBrowserController {
+public class TecnologiaDataProvider {
 	@Autowired
 	private AgrupadorDeDados agrupador;
 

@@ -120,7 +120,7 @@ public class DashboardDataProvider {
 
 		query.put("horario", new BasicDBObject("$gt", date));
 
-		List<String> sessoes = mongoTemplate.getCollection("eventos").distinct(campo, query);
+		List<String> sessoes = mongoTemplate.getCollection("navegacao").distinct(campo, query);
 
 		return sessoes.size();
 	}
@@ -130,7 +130,7 @@ public class DashboardDataProvider {
 
 		query.put("horario", BasicDBObjectBuilder.start("$gte", dataFim).add("$lt", dataInicio).get());
 
-		List<String> sessoes = mongoTemplate.getCollection("eventos").distinct(campo, query);
+		List<String> sessoes = mongoTemplate.getCollection("navegacao").distinct(campo, query);
 
 		return sessoes.size();
 	}
@@ -142,9 +142,8 @@ public class DashboardDataProvider {
 		BasicDBObject query = new BasicDBObject();
 
 		query.put("horario", new BasicDBObject("$gt", Date.from(date.toInstant())));
-		query.put("tipo", "navegacao");
 
-		DBCursor cursor = mongoTemplate.getCollection("eventos").find(query);
+		DBCursor cursor = mongoTemplate.getCollection("navegacao").find(query);
 
 		Map<String, Integer> contadorPaginas = new HashMap<>();
 		while (cursor.hasNext()) {
@@ -190,17 +189,14 @@ public class DashboardDataProvider {
 	}
 
 	private Map<String, Integer> acoesPorDia(List<Acao> eventos) {
-		Map<String, Integer> usuariosDia = new HashMap<>();
-		Set<String> usuariosJaSalvos = new HashSet<>();
+		Map<String, Integer> acoesPorDia = new HashMap<>();
 
 		for (Acao evento : eventos) {
 			String diaEvento = formatoDataGraficos.format(evento.getHorario());
-			String usuarioDia = evento.getUser() + diaEvento;
-
-			adicionarALista(usuariosDia, usuariosJaSalvos, usuarioDia, diaEvento);
+			acoesPorDia.merge(diaEvento, 1, (a, b) -> a + b);
 		}
 
-		return usuariosDia;
+		return acoesPorDia;
 	}
 
 	private void adicionarALista(Map<String, Integer> elementos, Set<String> elementosJaSalvos, String idElemento,

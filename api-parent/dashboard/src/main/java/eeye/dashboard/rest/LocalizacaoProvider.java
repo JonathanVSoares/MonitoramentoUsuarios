@@ -54,7 +54,7 @@ public class LocalizacaoProvider {
 		return new ResponseEntity<>(totais, HttpStatus.OK);
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/totalIdiomas")
+	@RequestMapping(method = RequestMethod.GET, value = "/idiomas")
 	public ResponseEntity<Map<String, Integer>> idiomas(@RequestParam(value = "diasInicio") int diasInicio,
 			@RequestParam(value = "diasFim") int diasFim) {
 		Date dataInicio = DateUtils.pegarDataMenosXDias(diasInicio);
@@ -64,18 +64,22 @@ public class LocalizacaoProvider {
 
 		Map<String, Integer> totais = agrupador.agruparTotaisUsuariosPorCampo(navegacoes, (navegacao) -> navegacao.getIdioma());
 
+		totais.remove("ND");
+		
 		return new ResponseEntity<>(totais, HttpStatus.OK);
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/outrosPaises")
+	@RequestMapping(method = RequestMethod.GET, value = "/estrangeiros")
 	public ResponseEntity<Map<String, Integer>> outrosPaises(@RequestParam(value = "diasInicio") int diasInicio,
 			@RequestParam(value = "diasFim") int diasFim) {
 		Date dataInicio = DateUtils.pegarDataMenosXDias(diasInicio);
 		Date dataFim = DateUtils.pegarDataMenosXDias(diasFim);
 
-		List<Navegacao> navegacoes = navegacaoRepository.findByHorarioBetweenAndPaisNot(dataInicio, dataFim, "Brazil");
+		List<Navegacao> navegacoes = navegacaoRepository.findByHorarioBetweenAndPaisNot(dataFim, dataInicio, "Brazil");
 
 		Map<String, Integer> totais = agrupador.agruparTotaisUsuariosPorCampo(navegacoes, (navegacao) -> navegacao.getPais());
+
+		totais.remove("ND");
 
 		return new ResponseEntity<>(totais, HttpStatus.OK);
 	}

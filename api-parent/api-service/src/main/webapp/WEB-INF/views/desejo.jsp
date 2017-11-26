@@ -224,10 +224,17 @@ Para saber mais, visite: https://www.lojaskd.com.br/trabalhe-conosco/
 <img src="//assets-cms.lojaskd.com.br/production/da6280e0-aa00-11e7-abfe-69e7d999ff29.png" alt="LojasKD.com.br - Procurou móveis, encontrou aqui!" width="185">                </a>
             </h1>
 
-            <form action="https://www.lojaskd.com.br/busca/" target="_top"  method="get" class="lkd-search-form lkd-header__search">
-    <input type="text" name="pesquisa" class="lkd-search-form__input" placeholder="Encontre os móveis para sua decoração">
-    <button class="lkd-search-form__icon-button" type="submit"><i class="fa fa-search"></i></button>
-</form>
+            <script>
+	function arrumarUrl(){
+		var arg = document.getElementById("pesq");
+		window.location.href = "/tcc/pesquisa?pesquisa="+arg.value;
+	}
+</script>
+            <div class="lkd-search-form lkd-header__search">
+    <input id = "pesq" type="text" name="pesquisa" class="lkd-search-form__input" placeholder="Encontre os móveis para sua decoração">
+    <button class="lkd-search-form__icon-button" onclick="arrumarUrl()" ><i class="fa fa-search"></i></button>
+</div>
+
             <nav class="lkd-customer-navbar is-loading" data-customer-navbar>
     <span class="lkd-customer-navbar__button" role="button">
         <span class="hidden" data-logged="true">
@@ -259,11 +266,11 @@ Para saber mais, visite: https://www.lojaskd.com.br/trabalhe-conosco/
     </ul>
 </nav>
             <div class="lkd-header__icons">
-    <a href="https://www.lojaskd.com.br/areavip/listas" class="lkd-badge lkd-count-heart" data-noty-count="0" data-wishlist-count onclick="trackEvent(['Topo','Lista de desejos','Lista de desejos']);">
+    <a href="/tcc/desejo?produto=null&acao=ver" class="lkd-badge lkd-count-heart" data-noty-count="${desejo}" data-wishlist-count onclick="trackEvent(['Topo','Lista de desejos','Lista de desejos']);">
         <span class="kr-visually-hidden">Ir para lista de desejos</span>
         <i class="lkd-header__icon fa fa-heart"></i>
     </a>
-    <a href="https://www.lojaskd.com.br/carrinho" onclick="trackEvent(['Topo','Carrinho','Carrinho']);" class="lkd-badge" data-noty-count="0" data-cart-count>
+    <a href="/tcc/carrinho?produto_kit=null&acao=ver" onclick="trackEvent(['Topo','Carrinho','Carrinho']);" class="lkd-badge" data-noty-count="${carrinho}" data-cart-count>
         <span class="kr-visually-hidden">Ir para o carrinho de compras</span>
         <i class="lkd-header__icon fa fa-shopping-cart"></i>
     </a>

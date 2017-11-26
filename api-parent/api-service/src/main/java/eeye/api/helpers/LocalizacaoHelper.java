@@ -17,6 +17,10 @@ import eeye.model.Navegacao;
 @Component
 public class LocalizacaoHelper {
 	public void registrarLocalizacao(Navegacao navegacao) throws ApiException, InterruptedException, IOException {
+		if (navegacao.getPosicaoGeo() == null) {
+			return;
+		}
+		
 		double lat = navegacao.getPosicaoGeo().getX();
 		double lng = navegacao.getPosicaoGeo().getY();
 		

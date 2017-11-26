@@ -1,10 +1,10 @@
 function pegarDadosLocalizacaoMapa(dias) {
-	let diasAnteriores = calcularDiasAnteriores(dias);
-	
 	$.ajax({
 		url: "http://localhost:7070/tcc/dashboardData/localizacao/totalEstadosAbrev/?diasInicio=-1&diasFim=" + dias
 	}).done(function(dados) {
+		delete dados["ND"];
 		drawRegionsMap(dados);
+		atualizarTotalMapaBrasil(dados);
 	});
 }
 
@@ -40,10 +40,18 @@ function drawRegionsMap(dados) {
 		colorAxis : {
 			colors : [ 'orange', 'blue' ]
 		}
-	// orange to blue
 	};
 	geochart.draw(data, options);
 };
+
+function atualizarTotalMapaBrasil(dados) {
+	let total = 0;
+	Object.keys(dados).map(function(key, index) {
+		total += dados[key];
+	});
+	
+	$("#totalAcessosBrasil").text("Total: " + total);
+}
 
 google.load('visualization', '1', {
 	'packages' : [ 'geochart', 'table' ]
@@ -51,4 +59,10 @@ google.load('visualization', '1', {
 
 google.setOnLoadCallback(function() {
 	pegarDadosLocalizacaoMapa(7);// get from select in html
+});
+
+
+$("#dropdown-localizacao .valor-dropdown").click(function() {
+	let dias = $(this).attr("data-value");
+	pegarDadosLocalizacaoMapa(dias);
 });

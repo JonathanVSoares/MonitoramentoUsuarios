@@ -41,13 +41,8 @@ public class VisualizacoesDataProvider {
 			@RequestParam(value = "diasFim") int diasFim) {
 		Date dataInicio = DateUtils.pegarDataMenosXDias(diasInicio);
 		Date dataFim = DateUtils.pegarDataMenosXDias(diasFim);
-		
-		BasicDBObject query = new BasicDBObject();
-		query.put("horario", BasicDBObjectBuilder.start("$gte", dataFim).add("$lt", dataInicio).get());
-		query.put("tipo", "navegacao");
-		DBCursor cursor = mongoTemplate.getCollection("eventos").find(query);
 
-		return new ResponseEntity<>(cursor.count(), HttpStatus.OK);
+		return new ResponseEntity<>(navegacaoRepository.findByHorarioBetween(dataFim, dataInicio).size(), HttpStatus.OK);
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/numVisualizacoesAgrupadas/")

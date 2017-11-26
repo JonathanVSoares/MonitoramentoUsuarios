@@ -28,5 +28,36 @@ public class DesejoDao extends GerenciaDao<Desejo> {
 		}
 		return resultado;
 	}
+	
+	public int count() throws Exception {
+		open();
+
+		int num = 0;
+		try {
+			stmt = con.prepareStatement("select count(a.id_produto) as qtd from desejo a ");
+
+			rs = stmt.executeQuery();
+			if (rs.next()) {
+				num = rs.getInt("qtd");
+			}
+		} finally {
+			close();
+		}
+		return num;
+	}
+	
+	public void salvar(int id) throws Exception {
+		open();
+
+		try {
+			stmt = con.prepareStatement("insert into desejo values (1, ? , 1) ");
+			stmt.setInt(1, id);
+		    stmt.executeUpdate();
+			
+		} finally {
+			close();
+		}
+	}
+
         
 }

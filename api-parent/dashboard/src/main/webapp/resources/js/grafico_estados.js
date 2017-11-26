@@ -1,5 +1,33 @@
 function pegarDadosLocalizacaoEstados(grafico, dias) {
-	let diasAnteriores = calcularDiasAnteriores(dias);
+	let grafico = {
+		tooltip: {
+			trigger: 'axis',
+			axisPointer: {
+				type: 'shadow'
+			}
+		}
+		,grid: {
+			left: '3%',
+			right: '4%',
+			bottom: '3%',
+			containLabel: true
+		},
+		xAxis: {
+			type: 'value',
+			boundaryGap: [0, 0.01]
+		},
+		yAxis: {
+			type: 'category',
+			data: []
+		},
+		series: [
+			{
+				name: '',
+				type: 'bar',
+				data: []
+			}
+		]
+	};
 	
 	$.ajax({
 		url: "http://localhost:7070/tcc/dashboardData/localizacao/totalEstadosAbrev/?diasInicio=-1&diasFim=" + dias
@@ -14,7 +42,6 @@ function atualizarGraficoEstados(grafico, dados) {
 		estados.push([key, dados[key]]);
 	});
 	
-
 	estados.sort(function(a, b) {
 	    return b[1] - a[1];
 	});
@@ -46,37 +73,7 @@ function atualizarGraficoEstados(grafico, dados) {
 	myChart.setOption(grafico);
 }
 
-option = {
-	tooltip: {
-		trigger: 'axis',
-		axisPointer: {
-			type: 'shadow'
-		}
-	}
-	,grid: {
-		left: '3%',
-		right: '4%',
-		bottom: '3%',
-		containLabel: true
-	},
-	xAxis: {
-		type: 'value',
-		boundaryGap: [0, 0.01]
-	},
-	yAxis: {
-		type: 'category',
-		data: []
-	},
-	series: [
-		{
-			name: '',
-			type: 'bar',
-			data: []
-		}
-	]
-};
-
 var myChart = echarts.init(document.getElementById('main4'));
 myChart.setOption(option);
 
-pegarDadosLocalizacaoEstados(option, 7);// get from select in html
+pegarDadosLocalizacaoEstados(option, 7);
