@@ -91,17 +91,26 @@
 										mais comuns</span>
 								</div>
 								<div class="actions">
-									<div class="btn-group">
-										<button class="btn btn-default btn-sm dropdown-toggle"
+									<div class="btn-group dropdown-dias" id="dropdown-buscas">
+										<button
+											class="btn btn-default btn-sm dropdown-toggle dropdown-dias-escolhidos"
 											id="datebtn" type="button" data-toggle="dropdown"
 											aria-expanded="false">
-											Últimos 7 dias <i class="fa fa-angle-down"></i>
+											Últimos X dias <i class="fa fa-angle-down"></i>
 										</button>
 										<ul class="dropdown-menu" role="menu">
-											<li><a style="padding-top: 7px; padding-bottom: 7px;"
-												href="javascript:;"> Últimos 15 dias </a></li>
-											<li><a style="padding-top: 7px; padding-bottom: 7px;"
-												href="javascript:;"> Últimos 30 dias </a></li>
+											<li class="dropdown-dias-valor"><a
+												style="padding-top: 7px; padding-bottom: 7px;"
+												href="javascript:;" class="valor-dropdown" data-value="7">
+													Últimos 7 dias </a></li>
+											<li class="dropdown-dias-valor"><a
+												style="padding-top: 7px; padding-bottom: 7px;"
+												href="javascript:;" class="valor-dropdown" data-value="15">
+													Últimos 15 dias </a></li>
+											<li class="dropdown-dias-valor"><a
+												style="padding-top: 7px; padding-bottom: 7px;"
+												href="javascript:;" class="valor-dropdown" data-value="30">
+													Últimos 30 dias </a></li>
 										</ul>
 									</div>
 								</div>
@@ -114,13 +123,13 @@
 								</div>
 								<div class="row text-center">
 									<span data-counter="counterup" class="disponumber"
-										data-value="10">225450 </span>
+										data-value="10" id="totalPesquisas"> </span>
 
 								</div>
 								<div class="row">
 									<div style="text-align: center;">
-										<span style="color: #009e0f;"><i class="fa fa-arrow-up"></i>
-											8%</span>
+										<span style="color: #009e0f;" id="porcentagemAnteriorPesquisas"><i class="fa fa-arrow-up"></i>
+											%</span>
 									</div>
 								</div>
 								<br />
@@ -134,54 +143,54 @@
 											<th style="font-size: 14px; color: #073763;"
 												class="text-center">Frequência</th>
 										</thead>
-										<tbody>
+										<tbody id="tabela-termos-mais-comuns">
 											<tr>
-												<td class="text-center"><span class="subitext">'amarelo'</span>
-												</td>
-												<td class="text-center"><span class="subitext">60000</span>
-												</td>
-												<td class="text-center"><span class="subitext">3,65%</span>
-												</td>
+												<td class="text-center"><span
+													class="subitext nome-termo"></span></td>
+												<td class="text-center"><span
+													class="subitext qtd-termo"></span></td>
+												<td class="text-center"><span
+													class="subitext porcentagem-termo"></span></td>
 											</tr>
 											<tr>
-												<td class="text-center"><span class="subitext">'amarelo'</span>
-												</td>
-												<td class="text-center"><span class="subitext">60000</span>
-												</td>
-												<td class="text-center"><span class="subitext">3,65%</span>
-												</td>
+												<td class="text-center"><span
+													class="subitext nome-termo"></span></td>
+												<td class="text-center"><span
+													class="subitext qtd-termo"></span></td>
+												<td class="text-center"><span
+													class="subitext porcentagem-termo"></span></td>
 											</tr>
 											<tr>
-												<td class="text-center"><span class="subitext">'amarelo'</span>
-												</td>
-												<td class="text-center"><span class="subitext">60000</span>
-												</td>
-												<td class="text-center"><span class="subitext">3,65%</span>
-												</td>
+												<td class="text-center"><span
+													class="subitext nome-termo"></span></td>
+												<td class="text-center"><span
+													class="subitext qtd-termo"></span></td>
+												<td class="text-center"><span
+													class="subitext porcentagem-termo"></span></td>
 											</tr>
 											<tr>
-												<td class="text-center"><span class="subitext">'amarelo'</span>
-												</td>
-												<td class="text-center"><span class="subitext">60000</span>
-												</td>
-												<td class="text-center"><span class="subitext">3,65%</span>
-												</td>
+												<td class="text-center"><span
+													class="subitext nome-termo"></span></td>
+												<td class="text-center"><span
+													class="subitext qtd-termo"></span></td>
+												<td class="text-center"><span
+													class="subitext porcentagem-termo"></span></td>
 											</tr>
 											<tr>
-												<td class="text-center"><span class="subitext">'amarelo'</span>
-												</td>
-												<td class="text-center"><span class="subitext">60000</span>
-												</td>
-												<td class="text-center"><span class="subitext">3,65%</span>
-												</td>
+												<td class="text-center"><span
+													class="subitext nome-termo"></span></td>
+												<td class="text-center"><span
+													class="subitext qtd-termo"></span></td>
+												<td class="text-center"><span
+													class="subitext porcentagem-termo"></span></td>
 											</tr>
 											<tr>
-												<td class="text-center"><span class="subitext">'amarelo'</span>
-												</td>
-												<td class="text-center"><span class="subitext">60000</span>
-												</td>
-												<td class="text-center"><span class="subitext">3,65%</span>
-												</td>
+												<td class="text-center"><span
+													class="subitext nome-termo"></span></td>
+												<td class="text-center"><span
+													class="subitext qtd-termo"></span></td>
+												<td class="text-center"><span
+													class="subitext porcentagem-termo"></span></td>
 											</tr>
 										</tbody>
 									</table>
@@ -277,9 +286,8 @@
 			</div>
 		</div>
 	</div>
-
-
-
+	<script src="<c:url value="/resources/js/dropdown_selecao_dias.js"/>"></script>
+	<script src="<c:url value="/resources/js/pagina_buscas.js"/>"></script>
 
 </body>
 </html>

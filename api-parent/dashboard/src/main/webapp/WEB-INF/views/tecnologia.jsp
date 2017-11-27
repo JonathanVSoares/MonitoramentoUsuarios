@@ -53,14 +53,13 @@
 			<div class="menu-list">
 
 				<ul id="menu-content" class="menu-content collapse active">
-					<li><a href="dashboard"> <i
-							class="fa fa-home"></i> Dashboard
+					<li><a href="dashboard"> <i class="fa fa-home"></i>
+							Dashboard
 					</a></li>
 
-					<li data-toggle="collapse" data-target="#publico" aria-expanded="true">
-						<a href="#"><i class="fa fa-user"></i> Público <span
-							class="arrow"></span></a>
-					</li>
+					<li data-toggle="collapse" data-target="#publico"
+						aria-expanded="true"><a href="#"><i class="fa fa-user"></i>
+							Público <span class="arrow"></span></a></li>
 					<ul class="sub-menu collapse in" id="publico" aria-expanded="true">
 						<li class="active"><a href="/tcc/tecnologia">Tecnologia</a></li>
 						<li><a href="/tcc/localizacao">Localização</a></li>
@@ -92,17 +91,26 @@
 										visitantes</span>
 								</div>
 								<div class="actions">
-									<div class="btn-group">
-										<button class="btn btn-default btn-sm dropdown-toggle"
+									<div class="btn-group dropdown-dias" id="dropdown-tecnologia">
+										<button
+											class="btn btn-default btn-sm dropdown-toggle dropdown-dias-escolhidos"
 											id="datebtn" type="button" data-toggle="dropdown"
 											aria-expanded="false">
-											Últimos 7 dias <i class="fa fa-angle-down"></i>
+											Últimos X dias <i class="fa fa-angle-down"></i>
 										</button>
 										<ul class="dropdown-menu" role="menu">
-											<li><a style="padding-top: 7px; padding-bottom: 7px;"
-												href="javascript:;"> Últimos 15 dias </a></li>
-											<li><a style="padding-top: 7px; padding-bottom: 7px;"
-												href="javascript:;"> Últimos 30 dias </a></li>
+											<li class="dropdown-dias-valor"><a
+												style="padding-top: 7px; padding-bottom: 7px;"
+												href="javascript:;" class="valor-dropdown" data-value="7">
+													Últimos 7 dias </a></li>
+											<li class="dropdown-dias-valor"><a
+												style="padding-top: 7px; padding-bottom: 7px;"
+												href="javascript:;" class="valor-dropdown" data-value="15">
+													Últimos 15 dias </a></li>
+											<li class="dropdown-dias-valor"><a
+												style="padding-top: 7px; padding-bottom: 7px;"
+												href="javascript:;" class="valor-dropdown" data-value="30">
+													Últimos 30 dias </a></li>
 										</ul>
 									</div>
 								</div>
@@ -236,7 +244,8 @@
 				</div>
 				<div class="row">
 					<div class="col-lg-6 col-md-6">
-						<div class="portlet light bordered" style="padding-bottom: 0px;">
+						<div class="portlet light bordered" style="padding-bottom: 0px;"
+							id="secao-browser">
 							<div class="portlet-title" style="margin-bottom: 0px;">
 								<div class="caption">
 									<i class=""></i> <span
@@ -247,74 +256,89 @@
 								<div class="table-scrollable" style="margin: 0px !important;">
 									<table class="table">
 										<tbody>
-											<tr>
+											<tr id="linha-Chrome">
 												<td style="padding: 10px;" width="30%"><i
 													class="fa fa-chrome itable"></i><br> <span
 													class="subitext">Chrome</span></td>
 												<td>Visualizações<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-visualizacoes">2000</span>
 												</td>
 												<td>Sessões<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-sessoes">2000</span>
 												</td>
 												<td>Pesquisas<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-pesquisas">2000</span>
 												</td>
 											</tr>
-											<tr>
+											<tr id="linha-Firefox">
 												<td style="padding: 10px;" width="30%"><i
 													class="fa fa-firefox itable"></i><br> <span
 													class="subitext">Firefox</span></td>
 												<td>Visualizações<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-visualizacoes">2000</span>
 												</td>
 												<td>Sessões<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-sessoes">2000</span>
 												</td>
 												<td>Pesquisas<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-pesquisas">2000</span>
 												</td>
 											</tr>
-											<tr>
+											<tr id="linha-Explorer">
 												<td style="padding: 10px;" width="30%"><i
 													class="fa fa-internet-explorer itable"></i><br> <span
 													class="subitext">Explorer</span></td>
 												<td>Visualizações<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-visualizacoes">2000</span>
 												</td>
 												<td>Sessões<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-sessoes">2000</span>
 												</td>
 												<td>Pesquisas<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-pesquisas">2000</span>
 												</td>
 											</tr>
-											<tr>
+											<tr id="linha-Safari">
 												<td style="padding: 10px;" width="30%"><i
 													class="fa fa-safari itable"></i><br> <span
 													class="subitext">Safari</span></td>
 												<td>Visualizações<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-visualizacoes">2000</span>
 												</td>
 												<td>Sessões<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-sessoes">2000</span>
 												</td>
 												<td>Pesquisas<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-pesquisas">2000</span>
 												</td>
 											</tr>
-											<tr>
+											<tr id="linha-Opera">
 												<td style="padding: 10px;" width="30%"><i
 													class="fa fa-opera itable"></i><br> <span
 													class="subitext">Opera</span></td>
 												<td>Visualizações<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-visualizacoes">2000</span>
 												</td>
 												<td>Sessões<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-sessoes">2000</span>
 												</td>
 												<td>Pesquisas<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-pesquisas">2000</span>
 												</td>
 											</tr>
 										</tbody>
@@ -322,7 +346,8 @@
 								</div>
 							</div>
 						</div>
-						<div class="portlet light bordered" style="padding-bottom: 0px;">
+						<div class="portlet light bordered" style="padding-bottom: 0px;"
+							id="secao-resolucao">
 							<div class="portlet-title" style="margin-bottom: 0px;">
 								<div class="caption">
 									<i class=""></i> <span
@@ -335,56 +360,56 @@
 									<table class="table table-bordered">
 										<thead>
 											<th style="font-size: 16px; color: grey;" class="text-center">
-												1920x1080</th>
-											<th style="font-size: 16px; color: grey;" class="text-center">
 												800x600</th>
 											<th style="font-size: 16px; color: grey;" class="text-center">
 												1366x768</th>
 											<th style="font-size: 16px; color: grey;" class="text-center">
 												1280x1024</th>
+											<th style="font-size: 16px; color: grey;" class="text-center">
+												1920x1080</th>
 										</thead>
 										<tbody>
-											<tr>
+											<tr id="linha-visualizacoes">
 												<td class="text-center"><span
-													style="font-size: 24px; color: #1f6399;">2000</span> <span
-													class="subitext">Visualizações</span></td>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-800x600"></span> <span class="subitext">Visualizações</span></td>
 												<td class="text-center"><span
-													style="font-size: 24px; color: #1f6399;">2000</span> <span
-													class="subitext">Visualizações</span></td>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-1366x768"></span> <span class="subitext">Visualizações</span></td>
 												<td class="text-center"><span
-													style="font-size: 24px; color: #1f6399;">2000</span> <span
-													class="subitext">Visualizações</span></td>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-1280x1024"></span> <span class="subitext">Visualizações</span></td>
 												<td class="text-center"><span
-													style="font-size: 24px; color: #1f6399;">2000</span> <span
-													class="subitext">Visualizações</span></td>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-1920x1080"></span> <span class="subitext">Visualizações</span></td>
 											</tr>
-											<tr>
+											<tr id="linha-sessoes">
 												<td class="text-center"><span
-													style="font-size: 24px; color: #1f6399;">2000</span> <span
-													class="subitext">Sessões</span></td>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-800x600"></span> <span class="subitext">Sessões</span></td>
 												<td class="text-center"><span
-													style="font-size: 24px; color: #1f6399;">2000</span> <span
-													class="subitext">Sessões</span></td>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-1366x768"></span> <span class="subitext">Sessões</span></td>
 												<td class="text-center"><span
-													style="font-size: 24px; color: #1f6399;">2000</span> <span
-													class="subitext">Sessões</span></td>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-1280x1024"></span> <span class="subitext">Sessões</span></td>
 												<td class="text-center"><span
-													style="font-size: 24px; color: #1f6399;">2000</span> <span
-													class="subitext">Sessões</span></td>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-1920x1080"></span> <span class="subitext">Sessões</span></td>
 											</tr>
-											<tr>
+											<tr id="linha-pesquisas">
 												<td class="text-center"><span
-													style="font-size: 24px; color: #1f6399;">2000</span> <span
-													class="subitext">Pesquisas</span></td>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-800x600"></span> <span class="subitext">Pesquisas</span></td>
 												<td class="text-center"><span
-													style="font-size: 24px; color: #1f6399;">2000</span> <span
-													class="subitext">Pesquisas</span></td>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-1366x768"></span> <span class="subitext">Pesquisas</span></td>
 												<td class="text-center"><span
-													style="font-size: 24px; color: #1f6399;">2000</span> <span
-													class="subitext">Pesquisas</span></td>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-1280x1024"></span> <span class="subitext">Pesquisas</span></td>
 												<td class="text-center"><span
-													style="font-size: 24px; color: #1f6399;">2000</span> <span
-													class="subitext">Pesquisas</span></td>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-1920x1080"></span> <span class="subitext">Pesquisas</span></td>
 											</tr>
 										</tbody>
 									</table>
@@ -393,7 +418,8 @@
 						</div>
 					</div>
 					<div class="col-lg-6 col-md-6">
-						<div class="portlet light bordered" style="padding-bottom: 0px;">
+						<div class="portlet light bordered" style="padding-bottom: 0px;"
+							id="secao-dispositivos">
 							<div class="portlet-title" style="margin-bottom: 0px;">
 								<div class="caption">
 									<i class=""></i> <span
@@ -404,64 +430,76 @@
 								<div class="table-scrollable" style="margin: 0px !important;">
 									<table class="table">
 										<tbody>
-											<tr>
+											<tr id="linha-DESKTOP">
 												<td class="text-center" style="padding: 10px;" width="25%">
 													<i class="fa fa-desktop itable"></i><br> <span
 													class="subitext">Desktop</span>
 												</td>
 												<td>Visualizações<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-visualizacoes">2000</span>
 												</td>
 												<td>Sessões<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-sessoes">2000</span>
 												</td>
 												<td>Pesquisas<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-pesquisas">2000</span>
 												</td>
 											</tr>
-											<tr>
+											<tr id="linha-NOTEBOOK">
 												<td class="text-center" style="padding: 10px;" width="25%">
 													<i class="fa fa-laptop itable"></i><br> <span
 													class="subitext">Notebook</span>
 												</td>
 												<td>Visualizações<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-visualizacoes">2000</span>
 												</td>
 												<td>Sessões<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-sessoes">2000</span>
 												</td>
 												<td>Pesquisas<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-pesquisas">2000</span>
 												</td>
 											</tr>
-											<tr>
+											<tr id="linha-TABLET">
 												<td class="text-center" style="padding: 10px;" width="25%">
 													<i class="fa fa-tablet itable"></i><br> <span
 													class="subitext">Tablet<span>
 												</td>
 												<td>Visualizações<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-visualizacoes">2000</span>
 												</td>
 												<td>Sessões<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-sessoes">2000</span>
 												</td>
 												<td>Pesquisas<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-pesquisas">2000</span>
 												</td>
 											</tr>
-											<tr>
+											<tr id="linha-CELULAR">
 												<td class="text-center" style="padding: 10px;" width="25%">
 													<i class="fa fa-mobile itable"></i><br> <span
 													class="subitext">Smartphone</span>
 												</td>
 												<td>Visualizações<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-visualizacoes">2000</span>
 												</td>
 												<td>Sessões<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-sessoes">2000</span>
 												</td>
 												<td>Pesquisas<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-pesquisas">2000</span>
 												</td>
 											</tr>
 										</tbody>
@@ -470,7 +508,8 @@
 							</div>
 						</div>
 
-						<div class="portlet light bordered" style="padding-bottom: 0px;">
+						<div class="portlet light bordered" style="padding-bottom: 0px;"
+							id="secao-so">
 							<div class="portlet-title" style="margin-bottom: 0px;">
 								<div class="caption">
 									<i class=""></i> <span
@@ -482,64 +521,76 @@
 								<div class="table-scrollable" style="margin: 0px !important;">
 									<table class="table">
 										<tbody>
-											<tr>
+											<tr id="linha-Windows">
 												<td class="text-center" style="padding: 10px;" width="25%">
 													<i class="fa fa-windows itable"></i><br> <span
 													class="subitext">Windows</span>
 												</td>
 												<td>Visualizações<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-visualizacoes">2000</span>
 												</td>
 												<td>Sessões<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-sessoes">2000</span>
 												</td>
 												<td>Pesquisas<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-pesquisas">2000</span>
 												</td>
 											</tr>
-											<tr>
+											<tr id="linha-Linux">
 												<td class="text-center" style="padding: 10px;" width="25%">
 													<i class="fa fa-linux itable"></i><br> <span
 													class="subitext">Linux</span>
 												</td>
 												<td>Visualizações<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-visualizacoes">2000</span>
 												</td>
 												<td>Sessões<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-sessoes">2000</span>
 												</td>
 												<td>Pesquisas<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-pesquisas">2000</span>
 												</td>
 											</tr>
-											<tr>
+											<tr id="linha-Android">
 												<td class="text-center" style="padding: 10px;" width="25%">
 													<i class="fa fa-android itable"></i><br> <span
 													class="subitext">Android<span>
 												</td>
 												<td>Visualizações<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-visualizacoes">2000</span>
 												</td>
 												<td>Sessões<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-sessoes">2000</span>
 												</td>
 												<td>Pesquisas<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-pesquisas">2000</span>
 												</td>
 											</tr>
-											<tr>
+											<tr id="linha-Apple">
 												<td class="text-center" style="padding: 10px;" width="25%">
 													<i class="fa fa-apple itable"></i><br> <span
 													class="subitext">Apple</span>
 												</td>
 												<td>Visualizações<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-visualizacoes">2000</span>
 												</td>
 												<td>Sessões<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-sessoes">2000</span>
 												</td>
 												<td>Pesquisas<br> <span
-													style="font-size: 24px; color: #1f6399;">2000</span>
+													style="font-size: 24px; color: #1f6399;"
+													class="dado-pesquisas">2000</span>
 												</td>
 											</tr>
 										</tbody>
@@ -555,8 +606,9 @@
 		</div>
 	</div>
 
-
-
+	<script type="text/javascript"
+		src="<c:url value="resources/js/pagina_tecnologia.js"/>"></script>
+	<script src="<c:url value="/resources/js/dropdown_selecao_dias.js"/>"></script>
 
 </body>
 </html>

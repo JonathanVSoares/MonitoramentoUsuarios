@@ -1,78 +1,50 @@
-function atualizarDadosHorario(dias, nomeDado) {
+function atualizarDadosTecnologia(dias, secao, nomeDado) {
 	let diasInicio = -1;
 	let diasFim = dias - 1;
 	$.ajax({
-		url: "http://localhost:7070/tcc/dashboardData/sessoeshorario/" + nomeDado + "?diasInicio=" + diasInicio + "&diasFim=" + diasFim
+		url: "http://localhost:7070/tcc/dashboardData/tecnologia/" + secao + "/" + nomeDado + "/?diasInicio=" + diasInicio + "&diasFim=" + diasFim
 	}).done(function(dados) {
-		let porcentagens = calcularPoncentagensPeriodos(dados);
-		let classeDado = ".item-" + nomeDado;
-
+		let elementoSecao = $("#secao-" + secao);
 		Object.keys(dados).map(function(key, index) {
-			let idSecaoPeriodo = "#secao-" + key.toLowerCase();
-			$(idSecaoPeriodo).find(classeDado).find(".valor-dado").text(dados[key]);
-			$(idSecaoPeriodo).find(classeDado).find(".porcentagem-dado").text(porcentagens[key] + "%");
+			elementoSecao.find("#linha-" + key).find(".dado-" + nomeDado).text(dados[key]);
 		});
 	});
 }
 
-function atualizarMediasDuracaoHorario(dias, nomeDado) {
+function atualizarDadosTecnologiaResolucao(dias, nomeDado) {
 	let diasInicio = -1;
 	let diasFim = dias - 1;
 	$.ajax({
-		url: "http://localhost:7070/tcc/dashboardData/sessoeshorario/mediaDuracao?diasInicio=" + diasInicio + "&diasFim=" + diasFim
+		url: "http://localhost:7070/tcc/dashboardData/tecnologia/resolucao/" + nomeDado + "/?diasInicio=" + diasInicio + "&diasFim=" + diasFim
 	}).done(function(dados) {
-		let classeDado = ".item-medias";
-
+		let elementoSecao = $("#secao-resolucao");
 		Object.keys(dados).map(function(key, index) {
-			let idSecaoPeriodo = "#secao-" + key.toLowerCase();
-			let valorFormatado = formatarHorario(dados[key]);
-			
-			$(idSecaoPeriodo).find(classeDado).find(".valor-dado").text(valorFormatado);
+			elementoSecao.find("#linha-" + nomeDado).find(".dado-" + key).text(dados[key]);
 		});
 	});
 }
 
-function formatarHorario(tempo) {
-	 let date = new Date(null);
-	 date.setSeconds(tempo);
-	 return date.toISOString().substr(11, 8);
+function atualizarValoresPaginaTecnologia(dias) {
+	atualizarDadosTecnologia(dias, "browser", "visualizacoes");
+	atualizarDadosTecnologia(dias, "browser", "sessoes");
+	atualizarDadosTecnologia(dias, "browser", "pesquisas");
+
+	atualizarDadosTecnologiaResolucao(dias, "visualizacoes");
+	atualizarDadosTecnologiaResolucao(dias, "sessoes");
+	atualizarDadosTecnologiaResolucao(dias, "pesquisas");
+
+	atualizarDadosTecnologia(dias, "dispositivos", "visualizacoes");
+	atualizarDadosTecnologia(dias, "dispositivos", "sessoes");
+	atualizarDadosTecnologia(dias, "dispositivos", "pesquisas");
+
+	atualizarDadosTecnologia(dias, "so", "visualizacoes");
+	atualizarDadosTecnologia(dias, "so", "sessoes");
+	atualizarDadosTecnologia(dias, "so", "pesquisas");
 }
 
-function calcularPoncentagensPeriodos(dados) {
-	let total = 0;
-	
-	Object.keys(dados).map(function(key, index) {
-		total += parseInt(dados[key]);
-	});
+atualizarValoresPaginaTecnologia(7);
 
-	let porcentagens = {};
-	
-	if (total == 0) {
-		Object.keys(dados).map(function(key, index) {
-			porcentagens[key] = parseFloat(0).toFixed(1);
-		});
-	} else {
-		Object.keys(dados).map(function(key, index) {
-			porcentagens[key] = parseFloat((dados[key] * 100) / total).toFixed(1);
-		});
-	}
-	
-	return porcentagens;
-}
-
-function atualizarValoresPaginaHorario(dias) {
-	atualizarDadosHorario(dias, "visitantes");
-	atualizarDadosHorario(dias, "pesquisas");
-	atualizarDadosHorario(dias, "wishlist");
-	atualizarDadosHorario(dias, "carrinho");
-	atualizarDadosHorario(dias, "mobile");
-	
-	atualizarMediasDuracaoHorario(dias);
-}
-
-atualizarValoresPaginaHorario(7);
-
-$("#dropdown-secoes-horario .valor-dropdown").click(function() {
+$("#dropdown-tecnologia .valor-dropdown").click(function() {
 	let dias = $(this).attr("data-value");
-	atualizarValoresPaginaHorario(dias);
+	atualizarValoresPaginaTecnologia(dias);
 });

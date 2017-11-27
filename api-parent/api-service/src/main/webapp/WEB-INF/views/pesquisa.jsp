@@ -136,7 +136,7 @@ height="0" width="0" style="display:none;visibility:hidden"> </iframe> </noscrip
 </script>
             <div class="lkd-search-form lkd-header__search">
     <input id = "pesq" type="text" name="pesquisa" class="lkd-search-form__input" placeholder="Encontre os móveis para sua decoração">
-    <button class="lkd-search-form__icon-button" onclick="arrumarUrl()" ><i class="fa fa-search"></i></button>
+    <button class="lkd-search-form__icon-button" onclick="arrumarUrl()" id="botaoPesquisaEeye"><i class="fa fa-search"></i></button>
 </div>
             <nav class="lkd-customer-navbar is-loading" data-customer-navbar>
     <span class="lkd-customer-navbar__button" role="button">
@@ -228,8 +228,8 @@ data-ec-name="Am|73509"
 data-ec-position="1"
 data-ec-price=""
 data-ec-variant="1"
-class="item-ambiente ambiente lkd-box-ambiente produto-eeye" title="${f.nome}"> <a href="/tcc/desejo?acao=salvar&id=${f.id}" class="lkd-product-box__wishlist" id="whish73509"
-data-ec-wishlist-id="${f.id}"> <i class="lkd-product-box__wishlist-icon lkd-icon lkd-icon--heart"> </i> </a> <a data-ec-click="viewDetails"
+class="item-ambiente ambiente lkd-box-ambiente produto-eeye" title="${f.nome}"> <a href="/tcc/desejo?acao=salvar&id=${f.id}" class="lkd-product-box__wishlist add-wishlist-produto" id="whish73509"
+data-ec-wishlist-id="${f.id}" title="${f.nome}"> <i class="lkd-product-box__wishlist-icon lkd-icon lkd-icon--heart"> </i> </a> <a data-ec-click="viewDetails"
 href="/tcc/detalhes?id=${f.id}"
 title="${f.nome}"> <div class="product left"> <div class="imagem-produto" data-ec-click="viewDetails" data-event-category="Listagem"
 data-event-action="produto-images" data-event-label=""

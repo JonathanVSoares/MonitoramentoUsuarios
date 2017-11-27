@@ -26,119 +26,165 @@ public class TecnologiaDataProvider {
 	public ResponseEntity<Map<String, Integer>> browserVisualizacoes(@RequestParam(value = "diasInicio") int diasInicio,
 			@RequestParam(value = "diasFim") int diasFim) {
 		Map<String, Integer> totais = provedor.pegarDadosEntreDatasPorCampoAgrupandoCom(diasInicio, diasFim,
-				(navegacao) -> navegacao.getBrowser(), 
-				(campoParaAgrupar, navegacoes) -> agrupador.agruparTotaisVisualizacoesPorCampo(navegacoes, campoParaAgrupar));
+				(navegacao) -> navegacao.getBrowser(), (campoParaAgrupar, navegacoes) -> agrupador
+						.agruparTotaisVisualizacoesPorCampo(navegacoes, campoParaAgrupar));
 
+		colocarZerosBrowser(totais);
 		return new ResponseEntity<>(totais, HttpStatus.OK);
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/browser/sessoesUnicas")
+	@RequestMapping(method = RequestMethod.GET, value = "/browser/sessoes")
 	public ResponseEntity<Map<String, Integer>> browserSessoesUnicas(@RequestParam(value = "diasInicio") int diasInicio,
 			@RequestParam(value = "diasFim") int diasFim) {
 		Map<String, Integer> totais = provedor.pegarDadosEntreDatasPorCampoAgrupandoCom(diasInicio, diasFim,
 				(navegacao) -> navegacao.getBrowser(),
 				(campoParaAgrupar, navegacoes) -> agrupador.agruparSessoesUnicasPorCampo(navegacoes, campoParaAgrupar));
 
+		colocarZerosBrowser(totais);
 		return new ResponseEntity<>(totais, HttpStatus.OK);
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/browser/sessoesRetorno")
+	@RequestMapping(method = RequestMethod.GET, value = "/browser/pesquisas")
 	public ResponseEntity<Map<String, Integer>> browserSessoesRetorno(
 			@RequestParam(value = "diasInicio") int diasInicio, @RequestParam(value = "diasFim") int diasFim) {
 		Map<String, Integer> totais = provedor.pegarDadosEntreDatasPorCampoAgrupandoCom(diasInicio, diasFim,
-				(navegacao) -> navegacao.getBrowser(), 
-				(campoParaAgrupar, navegacoes) -> agrupador.agruparSessoesRetornoPorCampo(navegacoes, campoParaAgrupar));
+				(navegacao) -> navegacao.getBrowser(), (campoParaAgrupar, navegacoes) -> agrupador
+						.agruparSessoesRetornoPorCampo(navegacoes, campoParaAgrupar));
 
+		colocarZerosBrowser(totais);
 		return new ResponseEntity<>(totais, HttpStatus.OK);
+	}
+
+	private void colocarZerosBrowser(Map<String, Integer> totais) {
+		String[] browsers = { "Chrome", "Firefox", "Explorer", "Safari", "Opera" };
+
+		colocarZeros(totais, browsers);
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/resolucao/visualizacoes")
-	public ResponseEntity<Map<String, Integer>> resolucaoVisualizacoes(@RequestParam(value = "diasInicio") int diasInicio,
-			@RequestParam(value = "diasFim") int diasFim) {
+	public ResponseEntity<Map<String, Integer>> resolucaoVisualizacoes(
+			@RequestParam(value = "diasInicio") int diasInicio, @RequestParam(value = "diasFim") int diasFim) {
 		Map<String, Integer> totais = provedor.pegarDadosEntreDatasPorCampoAgrupandoCom(diasInicio, diasFim,
-				(navegacao) -> navegacao.getResolutionWidth().concat("x").concat(navegacao.getResolutionHeight()), 
-				(campoParaAgrupar, navegacoes) -> agrupador.agruparTotaisVisualizacoesPorCampo(navegacoes, campoParaAgrupar));
+				(navegacao) -> navegacao.getResolutionWidth().concat("x").concat(navegacao.getResolutionHeight()),
+				(campoParaAgrupar, navegacoes) -> agrupador.agruparTotaisVisualizacoesPorCampo(navegacoes,
+						campoParaAgrupar));
 
+		colocarZerosResolucao(totais);
 		return new ResponseEntity<>(totais, HttpStatus.OK);
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/resolucao/sessoesUnicas")
-	public ResponseEntity<Map<String, Integer>> resolucaoSessoesUnicas(@RequestParam(value = "diasInicio") int diasInicio,
-			@RequestParam(value = "diasFim") int diasFim) {
+	@RequestMapping(method = RequestMethod.GET, value = "/resolucao/sessoes")
+	public ResponseEntity<Map<String, Integer>> resolucaoSessoesUnicas(
+			@RequestParam(value = "diasInicio") int diasInicio, @RequestParam(value = "diasFim") int diasFim) {
 		Map<String, Integer> totais = provedor.pegarDadosEntreDatasPorCampoAgrupandoCom(diasInicio, diasFim,
 				(navegacao) -> navegacao.getResolutionWidth().concat("x").concat(navegacao.getResolutionHeight()),
 				(campoParaAgrupar, navegacoes) -> agrupador.agruparSessoesUnicasPorCampo(navegacoes, campoParaAgrupar));
 
+		colocarZerosResolucao(totais);
 		return new ResponseEntity<>(totais, HttpStatus.OK);
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/resolucao/sessoesRetorno")
+	@RequestMapping(method = RequestMethod.GET, value = "/resolucao/pesquisas")
 	public ResponseEntity<Map<String, Integer>> resolucaorSessoesRetorno(
 			@RequestParam(value = "diasInicio") int diasInicio, @RequestParam(value = "diasFim") int diasFim) {
 		Map<String, Integer> totais = provedor.pegarDadosEntreDatasPorCampoAgrupandoCom(diasInicio, diasFim,
-				(navegacao) -> navegacao.getResolutionWidth().concat("x").concat(navegacao.getResolutionHeight()), 
-				(campoParaAgrupar, navegacoes) -> agrupador.agruparSessoesRetornoPorCampo(navegacoes, campoParaAgrupar));
+				(navegacao) -> navegacao.getResolutionWidth().concat("x").concat(navegacao.getResolutionHeight()),
+				(campoParaAgrupar, navegacoes) -> agrupador.agruparSessoesRetornoPorCampo(navegacoes,
+						campoParaAgrupar));
 
+		colocarZerosResolucao(totais);
 		return new ResponseEntity<>(totais, HttpStatus.OK);
+	}
+
+	private void colocarZerosResolucao(Map<String, Integer> totais) {
+		String[] browsers = { "800x600", "1366x768", "1280x1024", "1920x1080" };
+
+		colocarZeros(totais, browsers);
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/dispositivos/visualizacoes")
-	public ResponseEntity<Map<String, Integer>> dispositivosVisualizacoes(@RequestParam(value = "diasInicio") int diasInicio,
-			@RequestParam(value = "diasFim") int diasFim) {
+	public ResponseEntity<Map<String, Integer>> dispositivosVisualizacoes(
+			@RequestParam(value = "diasInicio") int diasInicio, @RequestParam(value = "diasFim") int diasFim) {
 		Map<String, Integer> totais = provedor.pegarDadosEntreDatasPorCampoAgrupandoCom(diasInicio, diasFim,
-				(navegacao) -> navegacao.getTipoDispositivo().name(), 
-				(campoParaAgrupar, navegacoes) -> agrupador.agruparTotaisVisualizacoesPorCampo(navegacoes, campoParaAgrupar));
+				(navegacao) -> navegacao.getTipoDispositivo().name(), (campoParaAgrupar, navegacoes) -> agrupador
+						.agruparTotaisVisualizacoesPorCampo(navegacoes, campoParaAgrupar));
 
+		colocarZerosDispositivos(totais);
 		return new ResponseEntity<>(totais, HttpStatus.OK);
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/dispositivos/sessoesUnicas")
-	public ResponseEntity<Map<String, Integer>> dispositivosSessoesUnicas(@RequestParam(value = "diasInicio") int diasInicio,
-			@RequestParam(value = "diasFim") int diasFim) {
+	@RequestMapping(method = RequestMethod.GET, value = "/dispositivos/sessoes")
+	public ResponseEntity<Map<String, Integer>> dispositivosSessoesUnicas(
+			@RequestParam(value = "diasInicio") int diasInicio, @RequestParam(value = "diasFim") int diasFim) {
 		Map<String, Integer> totais = provedor.pegarDadosEntreDatasPorCampoAgrupandoCom(diasInicio, diasFim,
 				(navegacao) -> navegacao.getTipoDispositivo().name(),
 				(campoParaAgrupar, navegacoes) -> agrupador.agruparSessoesUnicasPorCampo(navegacoes, campoParaAgrupar));
 
+		colocarZerosDispositivos(totais);
 		return new ResponseEntity<>(totais, HttpStatus.OK);
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/dispositivos/sessoesRetorno")
+	@RequestMapping(method = RequestMethod.GET, value = "/dispositivos/pesquisas")
 	public ResponseEntity<Map<String, Integer>> dispositivosSessoesRetorno(
 			@RequestParam(value = "diasInicio") int diasInicio, @RequestParam(value = "diasFim") int diasFim) {
 		Map<String, Integer> totais = provedor.pegarDadosEntreDatasPorCampoAgrupandoCom(diasInicio, diasFim,
-				(navegacao) -> navegacao.getTipoDispositivo().name(), 
-				(campoParaAgrupar, navegacoes) -> agrupador.agruparSessoesRetornoPorCampo(navegacoes, campoParaAgrupar));
+				(navegacao) -> navegacao.getTipoDispositivo().name(), (campoParaAgrupar, navegacoes) -> agrupador
+						.agruparSessoesRetornoPorCampo(navegacoes, campoParaAgrupar));
 
+		colocarZerosDispositivos(totais);
 		return new ResponseEntity<>(totais, HttpStatus.OK);
+	}
+
+	private void colocarZerosDispositivos(Map<String, Integer> totais) {
+		String[] browsers = { "DESKTOP", "NOTEBOOK", "TABLET", "CELULAR" };
+
+		colocarZeros(totais, browsers);
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/so/visualizacoes")
 	public ResponseEntity<Map<String, Integer>> soVisualizacoes(@RequestParam(value = "diasInicio") int diasInicio,
 			@RequestParam(value = "diasFim") int diasFim) {
 		Map<String, Integer> totais = provedor.pegarDadosEntreDatasPorCampoAgrupandoCom(diasInicio, diasFim,
-				(navegacao) -> navegacao.getOs(), 
-				(campoParaAgrupar, navegacoes) -> agrupador.agruparTotaisVisualizacoesPorCampo(navegacoes, campoParaAgrupar));
+				(navegacao) -> navegacao.getOs(), (campoParaAgrupar, navegacoes) -> agrupador
+						.agruparTotaisVisualizacoesPorCampo(navegacoes, campoParaAgrupar));
 
+		colocarZerosSo(totais);
 		return new ResponseEntity<>(totais, HttpStatus.OK);
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/so/sessoesUnicas")
+	@RequestMapping(method = RequestMethod.GET, value = "/so/sessoes")
 	public ResponseEntity<Map<String, Integer>> soSessoesUnicas(@RequestParam(value = "diasInicio") int diasInicio,
 			@RequestParam(value = "diasFim") int diasFim) {
 		Map<String, Integer> totais = provedor.pegarDadosEntreDatasPorCampoAgrupandoCom(diasInicio, diasFim,
 				(navegacao) -> navegacao.getOs(),
 				(campoParaAgrupar, navegacoes) -> agrupador.agruparSessoesUnicasPorCampo(navegacoes, campoParaAgrupar));
 
+		colocarZerosSo(totais);
 		return new ResponseEntity<>(totais, HttpStatus.OK);
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/so/sessoesRetorno")
-	public ResponseEntity<Map<String, Integer>> soSessoesRetorno(
-			@RequestParam(value = "diasInicio") int diasInicio, @RequestParam(value = "diasFim") int diasFim) {
+	@RequestMapping(method = RequestMethod.GET, value = "/so/pesquisas")
+	public ResponseEntity<Map<String, Integer>> soSessoesRetorno(@RequestParam(value = "diasInicio") int diasInicio,
+			@RequestParam(value = "diasFim") int diasFim) {
 		Map<String, Integer> totais = provedor.pegarDadosEntreDatasPorCampoAgrupandoCom(diasInicio, diasFim,
-				(navegacao) -> navegacao.getOs(), 
-				(campoParaAgrupar, navegacoes) -> agrupador.agruparSessoesRetornoPorCampo(navegacoes, campoParaAgrupar));
+				(navegacao) -> navegacao.getOs(), (campoParaAgrupar, navegacoes) -> agrupador
+						.agruparSessoesRetornoPorCampo(navegacoes, campoParaAgrupar));
 
+		colocarZerosSo(totais);
 		return new ResponseEntity<>(totais, HttpStatus.OK);
+	}
+
+	private void colocarZerosSo(Map<String, Integer> totais) {
+		String[] browsers = { "Windows", "Linux", "Android", "Apple" };
+
+		colocarZeros(totais, browsers);
+	}
+
+	private void colocarZeros(Map<String, Integer> totais, String[] valores) {
+		for (String valor : valores) {
+			if (!totais.containsKey(valor)) {
+				totais.put(valor, 0);
+			}
+		}
 	}
 }

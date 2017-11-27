@@ -1501,5 +1501,7 @@ ga('send', 'event', eventName, eventBannerName, eventUrl, {
     })(jQuery);
 </script>
 	<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"aa62a0219f","applicationID":"32273587,32273588","transactionName":"MVABZxcDChIEUkBRCwgaIlARCwsPSnJVShBJXA1XABo=","queueTime":0,"applicationTime":787,"atts":"HRcCEV8ZGRw=","errorBeacon":"bam.nr-data.net","agent":""}</script>
+<script src="<c:url value="/resources/js/jquery.inview.min.js"/>"></script>
+<script src="<c:url value="/resources/js/eeye.js"/>"></script>
 </body>
 </html>
