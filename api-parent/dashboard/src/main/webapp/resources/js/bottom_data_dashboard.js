@@ -35,8 +35,10 @@ function visitasEssaSemana() {
 		}).done(function(semanaAnterior) {
 			let porcentagemDiferenca = ((essaSemana * 100) / semanaAnterior) - 100;
 
+			let valorPorcentagem = (porcentagemDiferenca > 0 ? "+" : "") + parseFloat(porcentagemDiferenca).toFixed(1) + "%" 
+			
 			let visitasSemana = $("#visitasSemana").contents();
-			visitasSemana[visitasSemana.length - 1].nodeValue = parseFloat(porcentagemDiferenca).toFixed(1) + "%";
+			visitasSemana[visitasSemana.length - 1].nodeValue = valorPorcentagem;
 		});
 	});
 }

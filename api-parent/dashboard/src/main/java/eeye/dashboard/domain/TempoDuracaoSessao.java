@@ -26,7 +26,7 @@ public class TempoDuracaoSessao {
 		}
 	}
 
-	public int calcularDuracaoEmMin() {
+	public int calcularDuracaoEmSec() {
 		return (int) ChronoUnit.SECONDS.between(horarioComeco.toInstant(), horarioFim.toInstant());
 	}
 }

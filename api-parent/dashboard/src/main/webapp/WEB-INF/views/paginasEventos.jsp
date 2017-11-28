@@ -89,8 +89,8 @@
 								<i class="fa fa-photo fa-icon-medium"></i>
 							</div>
 							<div class="details">
-								<div class="number">
-									<span data-counter="counterup" data-value="50000"></span> 50000
+								<div class="number" id="valor-cliquesBanner">
+									<span data-counter="counterup" data-value="50000"></span>
 								</div>
 								<div class="desc">Visitantes clicaram no banner
 									promocional</div>
@@ -105,7 +105,7 @@
 								<i class="fa fa-mouse-pointer fa-icon-medium"></i>
 							</div>
 							<div class="details">
-								<div class="number">
+								<div class="number" id="valor-eventosSessao">
 									<span data-counter="counterup" data-value="13499"></span> 50000
 								</div>
 								<div class="desc">Eventos realizados em média por sessão</div>
@@ -120,7 +120,7 @@
 								<i class="fa fa-plus fa-icon-medium"></i>
 							</div>
 							<div class="details">
-								<div class="number">
+								<div class="number" id="valor-visitantesWishlistCarrinho">
 									<span data-counter="counterup" data-value="5"></span> 50000
 								</div>
 								<div class="desc">Visitantes inseriram na
@@ -134,7 +134,7 @@
 
 
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-md-6" id="secao-paginasMaisAcessadas">
 						<div class="portlet light bordered" style="padding-bottom: 0px;">
 							<div class="portlet-title" style="margin-bottom: 0px;">
 								<div class="caption">
@@ -143,17 +143,26 @@
 										PÁGINAS MAIS ACESSADAS</span>
 								</div>
 								<div class="actions">
-									<div class="btn-group">
-										<button class="btn btn-default btn-sm dropdown-toggle"
+									<div class="btn-group dropdown-dias" id="dropdown-paginas-mais-acessadas">
+										<button
+											class="btn btn-default btn-sm dropdown-toggle dropdown-dias-escolhidos"
 											id="datebtn" type="button" data-toggle="dropdown"
 											aria-expanded="false">
-											Últimos 7 dias <i class="fa fa-angle-down"></i>
+											Últimos X dias <i class="fa fa-angle-down"></i>
 										</button>
 										<ul class="dropdown-menu" role="menu">
-											<li><a style="padding-top: 7px; padding-bottom: 7px;"
-												href="javascript:;"> Últimos 15 dias </a></li>
-											<li><a style="padding-top: 7px; padding-bottom: 7px;"
-												href="javascript:;"> Últimos 30 dias </a></li>
+											<li class="dropdown-dias-valor"><a
+												style="padding-top: 7px; padding-bottom: 7px;"
+												href="javascript:;" class="valor-dropdown" data-value="7">
+													Últimos 7 dias </a></li>
+											<li class="dropdown-dias-valor"><a
+												style="padding-top: 7px; padding-bottom: 7px;"
+												href="javascript:;" class="valor-dropdown" data-value="15">
+													Últimos 15 dias </a></li>
+											<li class="dropdown-dias-valor"><a
+												style="padding-top: 7px; padding-bottom: 7px;"
+												href="javascript:;" class="valor-dropdown" data-value="30">
+													Últimos 30 dias </a></li>
 										</ul>
 									</div>
 								</div>
@@ -170,45 +179,45 @@
 											<th style="font-size: 14px; color: #073763;"
 												class="text-center">% do Total</th>
 										</thead>
-										<tbody>
+										<tbody class="tabela-itens">
 											<tr>
-												<td class="text-center"><span class="subetext">/index/</span>
+												<td class="text-center"><span class="subetext nome-item"></span>
 												</td>
-												<td class="text-center"><span class="subetext">60000</span>
+												<td class="text-center"><span class="subetext valor-item"></span>
 												</td>
-												<td class="text-center"><span class="subetext">3,65%</span>
+												<td class="text-center"><span class="subetext porcentagem-item"></span>
 												</td>
 											</tr>
 											<tr>
-												<td class="text-center"><span class="subetext">/index/</span>
+												<td class="text-center"><span class="subetext nome-item"></span>
 												</td>
-												<td class="text-center"><span class="subetext">60000</span>
+												<td class="text-center"><span class="subetext valor-item"></span>
 												</td>
-												<td class="text-center"><span class="subetext">3,65%</span>
-												</td>
-											</tr>
-											<tr>
-												<td class="text-center"><span class="subetext">/index/</span>
-												</td>
-												<td class="text-center"><span class="subetext">60000</span>
-												</td>
-												<td class="text-center"><span class="subetext">3,65%</span>
+												<td class="text-center"><span class="subetext porcentagem-item"></span>
 												</td>
 											</tr>
 											<tr>
-												<td class="text-center"><span class="subetext">/index/</span>
+												<td class="text-center"><span class="subetext nome-item"></span>
 												</td>
-												<td class="text-center"><span class="subetext">60000</span>
+												<td class="text-center"><span class="subetext valor-item"></span>
 												</td>
-												<td class="text-center"><span class="subetext">3,65%</span>
+												<td class="text-center"><span class="subetext porcentagem-item"></span>
 												</td>
 											</tr>
 											<tr>
-												<td class="text-center"><span class="subetext">/index/</span>
+												<td class="text-center"><span class="subetext nome-item"></span>
 												</td>
-												<td class="text-center"><span class="subetext">60000</span>
+												<td class="text-center"><span class="subetext valor-item"></span>
 												</td>
-												<td class="text-center"><span class="subetext">3,65%</span>
+												<td class="text-center"><span class="subetext porcentagem-item"></span>
+												</td>
+											</tr>
+											<tr>
+												<td class="text-center"><span class="subetext nome-item"></span>
+												</td>
+												<td class="text-center"><span class="subetext valor-item"></span>
+												</td>
+												<td class="text-center"><span class="subetext porcentagem-item"></span>
 												</td>
 											</tr>
 										</tbody>
@@ -217,7 +226,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-6">
+					<div class="col-md-6" id="secao-paginasMaisRejeitadas">
 						<div class="portlet light bordered" style="padding-bottom: 0px;">
 							<div class="portlet-title" style="margin-bottom: 0px;">
 								<div class="caption">
@@ -226,17 +235,26 @@
 										PÁGINAS MAIS REJEITADAS</span>
 								</div>
 								<div class="actions">
-									<div class="btn-group">
-										<button class="btn btn-default btn-sm dropdown-toggle"
+									<div class="btn-group dropdown-dias" id="dropdown-paginas-mais-rejeitadas">
+										<button
+											class="btn btn-default btn-sm dropdown-toggle dropdown-dias-escolhidos"
 											id="datebtn" type="button" data-toggle="dropdown"
 											aria-expanded="false">
-											Últimos 7 dias <i class="fa fa-angle-down"></i>
+											Últimos X dias <i class="fa fa-angle-down"></i>
 										</button>
 										<ul class="dropdown-menu" role="menu">
-											<li><a style="padding-top: 7px; padding-bottom: 7px;"
-												href="javascript:;"> Últimos 15 dias </a></li>
-											<li><a style="padding-top: 7px; padding-bottom: 7px;"
-												href="javascript:;"> Últimos 30 dias </a></li>
+											<li class="dropdown-dias-valor"><a
+												style="padding-top: 7px; padding-bottom: 7px;"
+												href="javascript:;" class="valor-dropdown" data-value="7">
+													Últimos 7 dias </a></li>
+											<li class="dropdown-dias-valor"><a
+												style="padding-top: 7px; padding-bottom: 7px;"
+												href="javascript:;" class="valor-dropdown" data-value="15">
+													Últimos 15 dias </a></li>
+											<li class="dropdown-dias-valor"><a
+												style="padding-top: 7px; padding-bottom: 7px;"
+												href="javascript:;" class="valor-dropdown" data-value="30">
+													Últimos 30 dias </a></li>
 										</ul>
 									</div>
 								</div>
@@ -253,45 +271,45 @@
 											<th style="font-size: 14px; color: #073763;"
 												class="text-center">% do Total</th>
 										</thead>
-										<tbody>
+										<tbody class="tabela-itens">
 											<tr>
-												<td class="text-center"><span class="subetext">/index/</span>
+												<td class="text-center"><span class="subetext nome-item"></span>
 												</td>
-												<td class="text-center"><span class="subetext">60000</span>
+												<td class="text-center"><span class="subetext valor-item"></span>
 												</td>
-												<td class="text-center"><span class="subetext">3,65%</span>
+												<td class="text-center"><span class="subetext porcentagem-item"></span>
 												</td>
 											</tr>
 											<tr>
-												<td class="text-center"><span class="subetext">/index/</span>
+												<td class="text-center"><span class="subetext nome-item"></span>
 												</td>
-												<td class="text-center"><span class="subetext">60000</span>
+												<td class="text-center"><span class="subetext valor-item"></span>
 												</td>
-												<td class="text-center"><span class="subetext">3,65%</span>
-												</td>
-											</tr>
-											<tr>
-												<td class="text-center"><span class="subetext">/index/</span>
-												</td>
-												<td class="text-center"><span class="subetext">60000</span>
-												</td>
-												<td class="text-center"><span class="subetext">3,65%</span>
+												<td class="text-center"><span class="subetext porcentagem-item"></span>
 												</td>
 											</tr>
 											<tr>
-												<td class="text-center"><span class="subetext">/index/</span>
+												<td class="text-center"><span class="subetext nome-item"></span>
 												</td>
-												<td class="text-center"><span class="subetext">60000</span>
+												<td class="text-center"><span class="subetext valor-item"></span>
 												</td>
-												<td class="text-center"><span class="subetext">3,65%</span>
+												<td class="text-center"><span class="subetext porcentagem-item"></span>
 												</td>
 											</tr>
 											<tr>
-												<td class="text-center"><span class="subetext">/index/</span>
+												<td class="text-center"><span class="subetext nome-item"></span>
 												</td>
-												<td class="text-center"><span class="subetext">60000</span>
+												<td class="text-center"><span class="subetext valor-item"></span>
 												</td>
-												<td class="text-center"><span class="subetext">3,65%</span>
+												<td class="text-center"><span class="subetext porcentagem-item"></span>
+												</td>
+											</tr>
+											<tr>
+												<td class="text-center"><span class="subetext nome-item"></span>
+												</td>
+												<td class="text-center"><span class="subetext valor-item"></span>
+												</td>
+												<td class="text-center"><span class="subetext porcentagem-item"></span>
 												</td>
 											</tr>
 										</tbody>
@@ -315,6 +333,8 @@
 
 
 
+	<script src="<c:url value="/resources/js/dropdown_selecao_dias.js"/>"></script>
+	<script src="<c:url value="/resources/js/pagina_paginasEventos.js"/>"></script>
 
 </body>
 </html>

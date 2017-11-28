@@ -59,7 +59,7 @@ public class DashboardBottomDataController {
 		int totalDuracoes = 0;
 		int totalSessoes = duracoes.size();
 		while (it.hasNext()) {
-			totalDuracoes += it.next().getValue().calcularDuracaoEmMin();
+			totalDuracoes += it.next().getValue().calcularDuracaoEmSec();
 		}
 
 		int media = totalDuracoes / totalSessoes;

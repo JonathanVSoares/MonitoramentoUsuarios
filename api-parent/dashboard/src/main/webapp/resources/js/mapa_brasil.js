@@ -1,6 +1,6 @@
-function pegarDadosLocalizacaoMapa(dias) {
+function pegarDadosLocalizacaoMapa(dias, filtros) {
 	$.ajax({
-		url: "http://localhost:7070/tcc/dashboardData/localizacao/totalEstadosAbrev/?diasInicio=-1&diasFim=" + dias
+		url: "http://localhost:7070/tcc/dashboardData/localizacao/totalEstadosAbrev/?diasInicio=-1&diasFim=" + (dias-1) + "&argsAcao=" + filtros["acoes"] + "&argsDispositivos=" + filtros["disp"] + "&argsPermanencia=" + filtros["perm"] + "&argsHorario=" + filtros["hora"]
 	}).done(function(dados) {
 		delete dados["ND"];
 		drawRegionsMap(dados);
@@ -58,11 +58,14 @@ google.load('visualization', '1', {
 });
 
 google.setOnLoadCallback(function() {
-	pegarDadosLocalizacaoMapa(7);// get from select in html
+	let filtros = pegarFiltros();
+	pegarDadosLocalizacaoMapa(7, filtros);
 });
 
 
-$("#dropdown-localizacao .valor-dropdown").click(function() {
-	let dias = $(this).attr("data-value");
-	pegarDadosLocalizacaoMapa(dias);
+$("#btnBuscar").click(function() {
+	let dias = $("#datebtn").attr("data-value");
+
+	let filtros = pegarFiltros();
+	pegarDadosLocalizacaoMapa(dias, filtros);
 });

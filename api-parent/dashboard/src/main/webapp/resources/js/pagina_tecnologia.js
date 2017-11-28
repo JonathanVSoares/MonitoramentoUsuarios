@@ -1,8 +1,11 @@
-function atualizarDadosTecnologia(dias, secao, nomeDado) {
+function atualizarDadosTecnologia(dias, secao, nomeDado, filtros) {
 	let diasInicio = -1;
 	let diasFim = dias - 1;
+	
+	console.log("http://localhost:7070/tcc/dashboardData/tecnologia/" + secao + "/" + nomeDado + "/?diasInicio=" + diasInicio + "&diasFim=" + diasFim + "&argsAcao=" + filtros["acoes"] + "&argsLocalizacao=" + filtros["local"] + "&argsPermanencia=" + filtros["perm"] + "&argsHorario=" + filtros["hora"]);
+	
 	$.ajax({
-		url: "http://localhost:7070/tcc/dashboardData/tecnologia/" + secao + "/" + nomeDado + "/?diasInicio=" + diasInicio + "&diasFim=" + diasFim
+		url: "http://localhost:7070/tcc/dashboardData/tecnologia/" + secao + "/" + nomeDado + "/?diasInicio=" + diasInicio + "&diasFim=" + diasFim + "&argsAcao=" + filtros["acoes"] + "&argsLocalizacao=" + filtros["local"] + "&argsPermanencia=" + filtros["perm"] + "&argsHorario=" + filtros["hora"]
 	}).done(function(dados) {
 		let elementoSecao = $("#secao-" + secao);
 		Object.keys(dados).map(function(key, index) {
@@ -11,11 +14,11 @@ function atualizarDadosTecnologia(dias, secao, nomeDado) {
 	});
 }
 
-function atualizarDadosTecnologiaResolucao(dias, nomeDado) {
+function atualizarDadosTecnologiaResolucao(dias, nomeDado, filtros) {
 	let diasInicio = -1;
 	let diasFim = dias - 1;
 	$.ajax({
-		url: "http://localhost:7070/tcc/dashboardData/tecnologia/resolucao/" + nomeDado + "/?diasInicio=" + diasInicio + "&diasFim=" + diasFim
+		url: "http://localhost:7070/tcc/dashboardData/tecnologia/resolucao/" + nomeDado + "/?diasInicio=" + diasInicio + "&diasFim=" + diasFim + "&argsAcao=" + filtros["acoes"] + "&argsLocalizacao=" + filtros["local"] + "&argsPermanencia=" + filtros["perm"] + "&argsHorario=" + filtros["hora"]
 	}).done(function(dados) {
 		let elementoSecao = $("#secao-resolucao");
 		Object.keys(dados).map(function(key, index) {
@@ -25,26 +28,28 @@ function atualizarDadosTecnologiaResolucao(dias, nomeDado) {
 }
 
 function atualizarValoresPaginaTecnologia(dias) {
-	atualizarDadosTecnologia(dias, "browser", "visualizacoes");
-	atualizarDadosTecnologia(dias, "browser", "sessoes");
-	atualizarDadosTecnologia(dias, "browser", "pesquisas");
+	let filtros = pegarFiltros();
+	
+	atualizarDadosTecnologia(dias, "browser", "visualizacoes", filtros);
+	atualizarDadosTecnologia(dias, "browser", "sessoes", filtros);
+	atualizarDadosTecnologia(dias, "browser", "pesquisas", filtros);
 
-	atualizarDadosTecnologiaResolucao(dias, "visualizacoes");
-	atualizarDadosTecnologiaResolucao(dias, "sessoes");
-	atualizarDadosTecnologiaResolucao(dias, "pesquisas");
+	atualizarDadosTecnologiaResolucao(dias, "visualizacoes", filtros);
+	atualizarDadosTecnologiaResolucao(dias, "sessoes", filtros);
+	atualizarDadosTecnologiaResolucao(dias, "pesquisas", filtros);
 
-	atualizarDadosTecnologia(dias, "dispositivos", "visualizacoes");
-	atualizarDadosTecnologia(dias, "dispositivos", "sessoes");
-	atualizarDadosTecnologia(dias, "dispositivos", "pesquisas");
+	atualizarDadosTecnologia(dias, "dispositivos", "visualizacoes", filtros);
+	atualizarDadosTecnologia(dias, "dispositivos", "sessoes", filtros);
+	atualizarDadosTecnologia(dias, "dispositivos", "pesquisas", filtros);
 
-	atualizarDadosTecnologia(dias, "so", "visualizacoes");
-	atualizarDadosTecnologia(dias, "so", "sessoes");
-	atualizarDadosTecnologia(dias, "so", "pesquisas");
+	atualizarDadosTecnologia(dias, "so", "visualizacoes", filtros);
+	atualizarDadosTecnologia(dias, "so", "sessoes", filtros);
+	atualizarDadosTecnologia(dias, "so", "pesquisas", filtros);
 }
 
 atualizarValoresPaginaTecnologia(7);
 
-$("#dropdown-tecnologia .valor-dropdown").click(function() {
-	let dias = $(this).attr("data-value");
+$("#botao-buscar").click(function() {
+	let dias = $("#datebtn").attr("data-value");
 	atualizarValoresPaginaTecnologia(dias);
 });

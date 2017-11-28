@@ -124,7 +124,7 @@ public class DadosPorSessoesHorarioController {
 		Map<String, Integer> numSessoesHorario = new HashMap<>();
 		duracoes.entrySet().forEach((entry) -> {
 			TempoDuracaoSessao tempoDuracao = entry.getValue();
-			mediaDuracao.merge(tempoDuracao.getHorarioDoDia(), tempoDuracao.calcularDuracaoEmMin(), (a, b) -> a + b);
+			mediaDuracao.merge(tempoDuracao.getHorarioDoDia(), tempoDuracao.calcularDuracaoEmSec(), (a, b) -> a + b);
 			numSessoesHorario.merge(tempoDuracao.getHorarioDoDia(), 1, (a, b) -> a + b);
 		});
 

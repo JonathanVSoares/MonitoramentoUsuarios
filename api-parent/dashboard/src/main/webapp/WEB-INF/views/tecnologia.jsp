@@ -126,7 +126,8 @@
 																		.multiselect(
 																				{
 																					buttonWidth : '195px',
-																					buttonClass : 'btn btn-default btn-sm dropdown-toggle metricbtn',
+																					buttonId: 'multselacao',
+																					buttonClass : 'btn btn-default btn-sm dropdown-toggle metricbtn multSelectAcao',
 																					allSelectedText : 'Todos selecionados',
 																					nonSelectedText : 'Ação',
 																					nSelectedText : ' Selecionados',
@@ -151,7 +152,7 @@
 																		.multiselect(
 																				{
 																					buttonWidth : '195px',
-																					buttonClass : 'btn btn-default btn-sm dropdown-toggle metricbtn',
+																					buttonClass : 'btn btn-default btn-sm dropdown-toggle metricbtn multSelectLocal',
 																					allSelectedText : 'Todos selecionados',
 																					nonSelectedText : 'Localização',
 																					nSelectedText : ' Selecionados',
@@ -179,7 +180,7 @@
 																		.multiselect(
 																				{
 																					buttonWidth : '195px',
-																					buttonClass : 'btn btn-default btn-sm dropdown-toggle metricbtn',
+																					buttonClass : 'btn btn-default btn-sm dropdown-toggle metricbtn multSelectPerm',
 																					allSelectedText : 'Todos selecionados',
 																					nonSelectedText : 'Permanência',
 																					nSelectedText : ' Selecionados',
@@ -190,12 +191,12 @@
 										</script>
 										<div class="col-md-3">
 											<select id="multiperm" multiple="multiple">
-												<optgroup label="DuraÃ§Ã£o da sessÃ£o..." class="group-1">
-													<option value="1">Menos que 1 min</option>
-													<option value="3">Entre 1 e 3 min</option>
-													<option value="5">Entre 3 e 5 min</option>
-													<option value="10">Entre 5 e 10 min</option>
-													<option value="10m">Mais que 10 min</option>
+												<optgroup label="Duração da sessão..." class="group-1">
+													<option value="0:1">Menos que 1 min</option>
+													<option value="1:3">Entre 1 e 3 min</option>
+													<option value="3:5">Entre 3 e 5 min</option>
+													<option value="5:10">Entre 5 e 10 min</option>
+													<option value="10:0">Mais que 10 min</option>
 												</optgroup>
 											</select>
 										</div>
@@ -208,7 +209,7 @@
 																		.multiselect(
 																				{
 																					buttonWidth : '195px',
-																					buttonClass : 'btn btn-default btn-sm dropdown-toggle metricbtn',
+																					buttonClass : 'btn btn-default btn-sm dropdown-toggle metricbtn multSelectHora',
 																					allSelectedText : 'Todos selecionados',
 																					nonSelectedText : 'Horário',
 																					nSelectedText : ' Selecionados',
@@ -232,7 +233,7 @@
 									<div class="col-md-2">
 										<div class="btn-group metricas metricasright">
 											<button style="min-width: 135px;"
-												class="btn btn-default btn-sm datebtn" type="button">
+												class="btn btn-default btn-sm datebtn" type="button" id="botao-buscar">
 												<i class="fa fa-search"></i> Buscar
 											</button>
 										</div>
@@ -606,9 +607,10 @@
 		</div>
 	</div>
 
+	<script src="<c:url value="/resources/js/pegarFiltros.js"/>"></script>
+	<script src="<c:url value="/resources/js/dropdown_selecao_dias.js"/>"></script>
 	<script type="text/javascript"
 		src="<c:url value="resources/js/pagina_tecnologia.js"/>"></script>
-	<script src="<c:url value="/resources/js/dropdown_selecao_dias.js"/>"></script>
 
 </body>
 </html>

@@ -2,7 +2,7 @@ function pegarDadosLocalizacaoEstados(grafico, dias) {
 	let diasAnteriores = calcularDiasAnteriores(dias);
 
 	$.ajax({
-			url : "http://localhost:7070/tcc/dashboardData/localizacao/totalEstadosAbrev/?diasInicio=-1&diasFim=" + (dias - 1)
+			url : "http://localhost:7070/tcc/dashboardData/localizacao/totalEstadosAbrevSemArgs/?diasInicio=-1&diasFim=" + (dias - 1)
 		}).done(function(dados) {
 			atualizarGraficoEstados(grafico, dados);
 	});

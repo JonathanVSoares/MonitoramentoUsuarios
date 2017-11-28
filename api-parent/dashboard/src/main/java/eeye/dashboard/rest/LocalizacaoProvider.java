@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import eeye.dao.NavegacaoRepository;
 import eeye.dashboard.utils.AgrupadorDeDados;
 import eeye.dashboard.utils.DateUtils;
+import eeye.dashboard.utils.ProvedorDeDados;
 import eeye.model.Navegacao;
 
 @RestController
@@ -26,7 +27,10 @@ public class LocalizacaoProvider {
 	@Autowired
 	private AgrupadorDeDados agrupador;
 
-	@RequestMapping(method = RequestMethod.GET, value = "/totalEstadosAbrev")
+	@Autowired
+	private ProvedorDeDados provedor;
+
+	@RequestMapping(method = RequestMethod.GET, value = "/totalEstadosAbrevSemArgs")
 	public ResponseEntity<Map<String, Integer>> totalEstadosAbrev(@RequestParam(value = "diasInicio") int diasInicio,
 			@RequestParam(value = "diasFim") int diasFim) {
 		Date dataInicio = DateUtils.pegarDataMenosXDias(diasInicio);
@@ -40,13 +44,37 @@ public class LocalizacaoProvider {
 		return new ResponseEntity<>(totais, HttpStatus.OK);
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/totalEstados")
-	public ResponseEntity<Map<String, Integer>> totalEstados(@RequestParam(value = "diasInicio") int diasInicio,
-			@RequestParam(value = "diasFim") int diasFim) {
+	@RequestMapping(method = RequestMethod.GET, value = "/totalEstadosAbrev")
+	public ResponseEntity<Map<String, Integer>> totalEstadosAbrev(@RequestParam(value = "diasInicio") int diasInicio,
+			@RequestParam(value = "diasFim") int diasFim, @RequestParam(value = "argsAcao") String[] argsAcao,
+			@RequestParam(value = "argsDispositivos") String[] argsDispositivos,
+			@RequestParam(value = "argsPermanencia") String[] argsPermanencia,
+			@RequestParam(value = "argsHorario") String[] argsHorario) {
 		Date dataInicio = DateUtils.pegarDataMenosXDias(diasInicio);
 		Date dataFim = DateUtils.pegarDataMenosXDias(diasFim);
 
 		List<Navegacao> navegacoes = navegacaoRepository.findByHorarioBetween(dataFim, dataInicio);
+		
+		provedor.aplicarFiltros(navegacoes, dataFim, dataInicio, argsAcao, null, argsDispositivos, argsPermanencia, argsHorario);
+
+		Map<String, Integer> totais = agrupador.agruparTotaisUsuariosPorCampo(navegacoes,
+				(navegacao) -> navegacao.getEstadoAbrev());
+
+		return new ResponseEntity<>(totais, HttpStatus.OK);
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/totalEstados")
+	public ResponseEntity<Map<String, Integer>> totalEstados(@RequestParam(value = "diasInicio") int diasInicio,
+			@RequestParam(value = "diasFim") int diasFim, @RequestParam(value = "argsAcao") String[] argsAcao,
+			@RequestParam(value = "argsDispositivos") String[] argsDispositivos,
+			@RequestParam(value = "argsPermanencia") String[] argsPermanencia,
+			@RequestParam(value = "argsHorario") String[] argsHorario) {
+		Date dataInicio = DateUtils.pegarDataMenosXDias(diasInicio);
+		Date dataFim = DateUtils.pegarDataMenosXDias(diasFim);
+
+		List<Navegacao> navegacoes = navegacaoRepository.findByHorarioBetween(dataFim, dataInicio);
+		
+		provedor.aplicarFiltros(navegacoes, dataFim, dataInicio, argsAcao, null, argsDispositivos, argsPermanencia, argsHorario);
 
 		Map<String, Integer> totais = agrupador.agruparTotaisUsuariosPorCampo(navegacoes,
 				(navegacao) -> navegacao.getEstado());
@@ -56,11 +84,16 @@ public class LocalizacaoProvider {
 
 	@RequestMapping(method = RequestMethod.GET, value = "/idiomas")
 	public ResponseEntity<Map<String, Integer>> idiomas(@RequestParam(value = "diasInicio") int diasInicio,
-			@RequestParam(value = "diasFim") int diasFim) {
+			@RequestParam(value = "diasFim") int diasFim, @RequestParam(value = "argsAcao") String[] argsAcao,
+			@RequestParam(value = "argsDispositivos") String[] argsDispositivos,
+			@RequestParam(value = "argsPermanencia") String[] argsPermanencia,
+			@RequestParam(value = "argsHorario") String[] argsHorario) {
 		Date dataInicio = DateUtils.pegarDataMenosXDias(diasInicio);
 		Date dataFim = DateUtils.pegarDataMenosXDias(diasFim);
 
 		List<Navegacao> navegacoes = navegacaoRepository.findByHorarioBetween(dataFim, dataInicio);
+		
+		provedor.aplicarFiltros(navegacoes, dataFim, dataInicio, argsAcao, null, argsDispositivos, argsPermanencia, argsHorario);
 
 		Map<String, Integer> totais = agrupador.agruparTotaisUsuariosPorCampo(navegacoes, (navegacao) -> navegacao.getIdioma());
 
@@ -71,11 +104,16 @@ public class LocalizacaoProvider {
 
 	@RequestMapping(method = RequestMethod.GET, value = "/estrangeiros")
 	public ResponseEntity<Map<String, Integer>> outrosPaises(@RequestParam(value = "diasInicio") int diasInicio,
-			@RequestParam(value = "diasFim") int diasFim) {
+			@RequestParam(value = "diasFim") int diasFim, @RequestParam(value = "argsAcao") String[] argsAcao,
+			@RequestParam(value = "argsDispositivos") String[] argsDispositivos,
+			@RequestParam(value = "argsPermanencia") String[] argsPermanencia,
+			@RequestParam(value = "argsHorario") String[] argsHorario) {
 		Date dataInicio = DateUtils.pegarDataMenosXDias(diasInicio);
 		Date dataFim = DateUtils.pegarDataMenosXDias(diasFim);
 
 		List<Navegacao> navegacoes = navegacaoRepository.findByHorarioBetweenAndPaisNot(dataFim, dataInicio, "Brazil");
+		
+		provedor.aplicarFiltros(navegacoes, dataFim, dataInicio, argsAcao, null, argsDispositivos, argsPermanencia, argsHorario);
 
 		Map<String, Integer> totais = agrupador.agruparTotaisUsuariosPorCampo(navegacoes, (navegacao) -> navegacao.getPais());
 

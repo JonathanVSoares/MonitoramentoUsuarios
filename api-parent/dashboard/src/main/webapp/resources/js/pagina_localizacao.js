@@ -1,12 +1,10 @@
-function atualizarDadosLocalizacao(dias, nomeDado) {
+function atualizarDadosLocalizacao(dias, nomeDado, filtros) {
 	let diasInicio = -1;
 	let diasFim = dias - 1;
 	$.ajax({
-		url: "http://localhost:7070/tcc/dashboardData/localizacao/" + nomeDado + "?diasInicio=" + diasInicio + "&diasFim=" + diasFim
+		url: "http://localhost:7070/tcc/dashboardData/localizacao/" + nomeDado + "?diasInicio=" + diasInicio + "&diasFim=" + diasFim + "&argsAcao=" + filtros["acoes"] + "&argsDispositivos=" + filtros["disp"] + "&argsPermanencia=" + filtros["perm"] + "&argsHorario=" + filtros["hora"]
 	}).done(function(dados) {
 		let porcentagens = calcularPorcentagens(dados);
-
-		let classeDado = ".item-" + nomeDado;
 
 		let arrayDados = [];
 		Object.keys(dados).map(function(key, index) {
@@ -23,24 +21,30 @@ function atualizarDadosLocalizacao(dias, nomeDado) {
 		let total = calcularTotal(dados);
 		$(idSecao).find(".total-dados").text("Total: " + total);
 		
-		for (let i = 0; i < arrayDados.length && i < 3; i++) {
-			let key = arrayDados[i][0];
-			
+		for (let i = 0; i < 3; i++) {
 			let secaoItem = tabela.find("tr:nth-child(" + (i + 1) + ")");
-			
-			secaoItem.find(".nome-item").text(key);
-			secaoItem.find(".valor-item").text(dados[key]);
-			secaoItem.find(".porcentagem-item").text(porcentagens[key] + "%");
+			if (i >= arrayDados.length) {
+				secaoItem.find(".nome-item").text("");
+				secaoItem.find(".valor-item").text("");
+				secaoItem.find(".porcentagem-item").text("");
+			} else {
+				let key = arrayDados[i][0];
+				
+				secaoItem.find(".nome-item").text(key);
+				secaoItem.find(".valor-item").text(dados[key]);
+				secaoItem.find(".porcentagem-item").text(porcentagens[key] + "%");
+			}
 		}
 	});
 }
 
-function atualizarVisitantesDestaque(dias) {
+function atualizarVisitantesDestaque(dias, filtros) {
 	let diasInicio = -1;
 	let diasFim = dias - 1;
 	$.ajax({
-		url: "http://localhost:7070/tcc/dashboardData/localizacao/totalEstados?diasInicio=" + diasInicio + "&diasFim=" + diasFim
+		url: "http://localhost:7070/tcc/dashboardData/localizacao/totalEstados?diasInicio=" + diasInicio + "&diasFim=" + diasFim + "&argsAcao=" + filtros["acoes"] + "&argsDispositivos=" + filtros["disp"] + "&argsPermanencia=" + filtros["perm"] + "&argsHorario=" + filtros["hora"]
 	}).done(function(dados) {
+		delete dados["ND"];
 		let estados = [];
 		let total = calcularTotal(dados);
 		let porcentagens = calcularPorcentagens(dados);
@@ -92,15 +96,16 @@ function calcularPorcentagens(dados) {
 }
 
 function atualizarValoresPaginaLocalizacao(dias) {
-	atualizarDadosLocalizacao(dias, "estrangeiros");
-	atualizarDadosLocalizacao(dias, "idiomas");
+	let filtros = pegarFiltros();
+	atualizarDadosLocalizacao(dias, "estrangeiros", filtros);
+	atualizarDadosLocalizacao(dias, "idiomas", filtros);
 	
-	atualizarVisitantesDestaque(dias);
+	atualizarVisitantesDestaque(dias, filtros);
 }
 
 atualizarValoresPaginaLocalizacao(7);
 
-$("#dropdown-localizacao .valor-dropdown").click(function() {
-	let dias = $(this).attr("data-value");
+$("#btnBuscar").click(function() {
+	let dias = $("#datebtn").attr("data-value");
 	atualizarValoresPaginaLocalizacao(dias);
 });

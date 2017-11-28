@@ -126,7 +126,7 @@
 																		.multiselect(
 																				{
 																					buttonWidth : '195px',
-																					buttonClass : 'btn btn-default btn-sm dropdown-toggle metricbtn',
+																					buttonClass : 'btn btn-default btn-sm dropdown-toggle metricbtn multSelectAcao',
 																					allSelectedText : 'Todos selecionados',
 																					nonSelectedText : 'Ação',
 																					nSelectedText : ' Selecionados',
@@ -151,7 +151,7 @@
 																		.multiselect(
 																				{
 																					buttonWidth : '195px',
-																					buttonClass : 'btn btn-default btn-sm dropdown-toggle metricbtn',
+																					buttonClass : 'btn btn-default btn-sm dropdown-toggle metricbtn multSelectDisp',
 																					allSelectedText : 'Todos selecionados',
 																					nonSelectedText : 'Dispositivo',
 																					nSelectedText : ' Selecionados',
@@ -165,7 +165,7 @@
 												<option value="desk">Desktop</option>
 												<option value="note">Notebook</option>
 												<option value="tab">Tablet</option>
-												<option value="smart">Smartphone</option>
+												<option value="cel">Celular</option>
 											</select>
 										</div>
 
@@ -177,7 +177,7 @@
 																		.multiselect(
 																				{
 																					buttonWidth : '195px',
-																					buttonClass : 'btn btn-default btn-sm dropdown-toggle metricbtn',
+																					buttonClass : 'btn btn-default btn-sm dropdown-toggle metricbtn multSelectPerm',
 																					allSelectedText : 'Todos selecionados',
 																					nonSelectedText : 'Permanência',
 																					nSelectedText : ' Selecionados',
@@ -206,7 +206,7 @@
 																		.multiselect(
 																				{
 																					buttonWidth : '195px',
-																					buttonClass : 'btn btn-default btn-sm dropdown-toggle metricbtn',
+																					buttonClass : 'btn btn-default btn-sm dropdown-toggle metricbtn multSelectHora',
 																					allSelectedText : 'Todos selecionados',
 																					nonSelectedText : 'Horário',
 																					nSelectedText : ' Selecionados',
@@ -230,7 +230,7 @@
 									<div class="col-md-2">
 										<div class="btn-group metricas metricasright">
 											<button style="min-width: 135px;"
-												class="btn btn-default btn-sm datebtn" type="button">
+												class="btn btn-default btn-sm datebtn" type="button" id="btnBuscar">
 												<i class="fa fa-search"></i> Buscar
 											</button>
 										</div>
@@ -380,6 +380,7 @@
 	</div>
 
 	<script src="<c:url value="/resources/js/dropdown_selecao_dias.js"/>"></script>
+	<script src="<c:url value="/resources/js/pegarFiltrosLocal.js"/>"></script>
 	<script src="<c:url value="/resources/js/pagina_localizacao.js"/>"></script>
 </body>
 </html>

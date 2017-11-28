@@ -22,14 +22,19 @@ function atualizarTermosMaisComuns(dias) {
 			});
 
 			let tabela = $("#tabela-termos-mais-comuns")
-			for (let i = 0; i < termosArr.length && i < 6; i++) {
-				let key = termosArr[i][0];
-				
+			for (let i = 0; i < 6; i++) {
 				let secaoItem = tabela.find("tr:nth-child(" + (i + 1) + ")");
-				
-				secaoItem.find(".nome-termo").text("'" + key + "'");
-				secaoItem.find(".qtd-termo").text(dados[key]);
-				secaoItem.find(".porcentagem-termo").text(porcentagens[key] + "%");
+				if (i >= termosArr.length) {
+					secaoItem.find(".nome-termo").text("");
+					secaoItem.find(".qtd-termo").text("");
+					secaoItem.find(".porcentagem-termo").text("");
+				} else {
+					let key = termosArr[i][0];
+					
+					secaoItem.find(".nome-termo").text("'" + key + "'");
+					secaoItem.find(".qtd-termo").text(dados[key]);
+					secaoItem.find(".porcentagem-termo").text(porcentagens[key] + "%");
+				}
 			}
 		});
 
@@ -58,6 +63,20 @@ function atualizarTermosMaisComuns(dias) {
 
 			elementoPorcentagemContents[elementoPorcentagemContents.length - 1].nodeValue = parseFloat(porcentagemDiferenca).toFixed(1) + "%";
 		});
+	});
+}
+
+function dadosLateral(nomeDado) {
+	$.ajax({
+		url: "http://localhost:7070/tcc/dashboardData/buscas/" + nomeDado
+	}).done(function(totais) {
+		let porcentagem = parseFloat((totais[1]/totais[0]) * 100).toFixed(1);
+		
+		let secao = $("#secao-" + nomeDado);
+
+		secao.find(".total-item").text(totais[1]);
+		secao.find(".porcentagem-item").text(porcentagem + "%");
+		secao.find(".barra-porcentagem-item").css("width", porcentagem + "%");
 	});
 }
 
@@ -92,6 +111,9 @@ function calcularPorcentagens(dados, total) {
 }
 
 atualizarTermosMaisComuns(7);
+dadosLateral("visitantesBuscas");
+dadosLateral("pesquisasMobile");
+dadosLateral("cliqueProdutosPesquisa");
 
 $("#dropdown-buscas .valor-dropdown").click(function() {
 	let dias = $(this).attr("data-value");

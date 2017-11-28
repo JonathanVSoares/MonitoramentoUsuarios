@@ -128,8 +128,9 @@
 								</div>
 								<div class="row">
 									<div style="text-align: center;">
-										<span style="color: #009e0f;" id="porcentagemAnteriorPesquisas"><i class="fa fa-arrow-up"></i>
-											%</span>
+										<span style="color: #009e0f;"
+											id="porcentagemAnteriorPesquisas"><i
+											class="fa fa-arrow-up"></i> %</span>
 									</div>
 								</div>
 								<br />
@@ -202,10 +203,10 @@
 
 					<div class="col-lg-6 col-md-6">
 
-						<div class="dashboard-stat2 bordered">
+						<div class="dashboard-stat2 bordered" id="secao-visitantesBuscas">
 							<div class="display">
 								<div class="number" style="margin-bottom: 20px;">
-									<h3 class="font-green-sharp">50000</h3>
+									<h3 class="font-green-sharp total-item"></h3>
 									<small>Visitantes realizaram buscas</small>
 								</div>
 								<div class="icon">
@@ -214,23 +215,23 @@
 							</div>
 							<div class="progress-info">
 								<div class="progress">
-									<span style="width: 68%;"
-										class="progress-bar progress-bar-success green-sharp">
+									<span
+										class="progress-bar progress-bar-success green-sharp barra-porcentagem-item">
 										<span class="sr-only">76% progress</span>
 									</span>
 								</div>
 								<div class="status">
 									<div class="status-title">% Entre todos os visitantes</div>
-									<div class="status-number">68%</div>
+									<div class="status-number porcentagem-item"></div>
 								</div>
 							</div>
 						</div>
 
 
-						<div class="dashboard-stat2 bordered">
+						<div class="dashboard-stat2 bordered" id="secao-cliqueProdutosPesquisa">
 							<div class="display">
 								<div class="number" style="margin-bottom: 20px;">
-									<h3 class="font-green-sharp">50000</h3>
+									<h3 class="font-green-sharp total-item"></h3>
 									<small>Cliques em produtos da pesquisa</small>
 								</div>
 								<div class="icon">
@@ -239,23 +240,23 @@
 							</div>
 							<div class="progress-info">
 								<div class="progress">
-									<span style="width: 40%;"
-										class="progress-bar progress-bar-success green-sharp">
+									<span
+										class="progress-bar progress-bar-success green-sharp barra-porcentagem-item">
 										<span class="sr-only">40% progress</span>
 									</span>
 								</div>
 								<div class="status">
 									<div class="status-title">% Entre todas as pesquisas</div>
-									<div class="status-number">40%</div>
+									<div class="status-number porcentagem-item"></div>
 								</div>
 							</div>
 						</div>
 
 
-						<div class="dashboard-stat2 bordered">
+						<div class="dashboard-stat2 bordered" id="secao-pesquisasMobile">
 							<div class="display">
 								<div class="number" style="margin-bottom: 20px;">
-									<h3 class="font-green-sharp">50000</h3>
+									<h3 class="font-green-sharp total-item">50000</h3>
 									<small>Visitantes mobile realizaram pesquisas</small>
 								</div>
 								<div class="icon">
@@ -264,15 +265,15 @@
 							</div>
 							<div class="progress-info">
 								<div class="progress">
-									<span style="width: 10%;"
-										class="progress-bar progress-bar-success green-sharp">
+									<span
+										class="progress-bar progress-bar-success green-sharp  barra-porcentagem-item">
 										<span class="sr-only">10% progress</span>
 									</span>
 								</div>
 								<div class="status">
 									<div class="status-title">% Entre visitantes mobile no
 										geral</div>
-									<div class="status-number">10%</div>
+									<div class="status-number porcentagem-item"></div>
 								</div>
 							</div>
 						</div>
