@@ -10,4 +10,4 @@ Lombok instalado para sua IDE (https://projectlombok.org/)
 
 Em sua IDE, importe os módulos (api-dao, api-model, api-service, dashboard) do sistema como maven projects. Deve resultar em algo como isso:
 
-![alt text](modulos_eclipse.png "Imagem modulos no eclipse")
+![alt text](modulos_eclipse.PNG "Imagem modulos no eclipse")
