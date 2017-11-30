@@ -19,23 +19,12 @@ function drawRegionsMap(dados) {
 	var view = new google.visualization.DataView(data)
 	view.setColumns([ 0, 1 ])
 
-	var options = {
-		region : 'BR',
-		resolution : 'provinces',
-		width : 200,
-		height : 200
-	};
-
-	var chart = new google.visualization.GeoChart(document
-			.getElementById('chart_div'));
-	chart.draw(data, options);
-
 	var geochart = new google.visualization.GeoChart(document
 			.getElementById('chart_div'));
 	var options = {
 		region : 'BR',
 		resolution : 'provinces',
-		width : 400,
+		width : 800,
 		height : 400,
 		colorAxis : {
 			colors : [ 'orange', 'blue' ]

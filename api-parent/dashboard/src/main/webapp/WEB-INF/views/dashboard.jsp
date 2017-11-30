@@ -64,13 +64,13 @@
 					<ul class="sub-menu collapse" id="publico">
 						<li><a href="/tcc/tecnologia">Tecnologia</a></li>
 						<li><a href="/tcc/localizacao">Localização</a></li>
-						<li><a href="/tcc/horario">Horário</a></li>
 					</ul>
 					<li data-toggle="collapse" data-target="#comportamento"
 						class="collapsed" style="border-bottom: 0px;"><a href="#"><i
 							class="fa fa-lightbulb-o"></i> Comportamento <span class="arrow"></span></a>
 					</li>
 					<ul class="sub-menu collapse" id="comportamento">
+						<li><a href="/tcc/horario">Horário de Acessos</a></li>
 						<li><a href="/tcc/buscas">Buscas</a></li>
 						<li><a href="/tcc/paginasEventos">Páginas e Eventos</a></li>
 					</ul>

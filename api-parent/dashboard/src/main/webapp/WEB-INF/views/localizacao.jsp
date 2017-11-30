@@ -63,13 +63,13 @@
 					<ul class="sub-menu collapse in" id="publico" aria-expanded="true">
 						<li><a href="/tcc/tecnologia">Tecnologia</a></li>
 						<li class="active"><a href="/tcc/localizacao">Localização</a></li>
-						<li><a href="/tcc/horario">Horário</a></li>
 					</ul>
 					<li data-toggle="collapse" data-target="#comportamento"
 						class="collapsed" style="border-bottom: 0px;"><a href="#"><i
 							class="fa fa-lightbulb-o"></i> Comportamento <span class="arrow"></span></a>
 					</li>
 					<ul class="sub-menu collapse" id="comportamento">
+						<li><a href="/tcc/horario">Horário de Acessos</a></li>
 						<li><a href="/tcc/buscas">Buscas</a></li>
 						<li><a href="/tcc/paginasEventos">Páginas e Eventos</a></li>
 					</ul>
@@ -368,7 +368,7 @@
 								</div>
 							</div>
 							<div class="portlet-body">
-								<div id="chart_div" style="width: 100%; height: 480px;"></div>
+								<div id="chart_div" style="height: 480px;"></div>
 								<script type="text/javascript"
 									src="<c:url value="resources/js/mapa_brasil.js"/>"></script>
 							</div>
